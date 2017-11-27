@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'MundoAnimalitos'),
 
     /*
     |--------------------------------------------------------------------------
@@ -171,6 +171,7 @@ return [
         Fx3costa\LaravelChartJs\Providers\ChartjsServiceProvider::class,
         Laraveles\Spanish\SpanishServiceProvider::class,
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
 
         /*
          * Package Service Providers...

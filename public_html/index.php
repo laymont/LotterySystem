@@ -10,10 +10,6 @@
 define('LARAVEL_START', microtime(true));
 
 /*
-Modificacion para hosting compartido
-*/
-
-/*
 |--------------------------------------------------------------------------
 | Register The Auto Loader
 |--------------------------------------------------------------------------
@@ -63,6 +59,6 @@ $response->send();
 
 $kernel->terminate($request, $response);
 
-/*$app->bind('path.public', function() {
+$app->bind('path.public', function() {
     return __DIR__;
-});*/
+});

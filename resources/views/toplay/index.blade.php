@@ -258,29 +258,7 @@
 
 @section('scripts')
 <script src="{{ asset('js/holder.min.js') }}"></script>
-<script type="text/javascript">
-  $(document).ready(function() {
-    var bets = [];
-    var user = { user: $('input:hidden[name=user_id]').val() }
-    var date = { date: $('#date').val() }
-    var lottery = { lottery: $('#lottery_id').val() }
-    var raffle_id = { raffle: $('#raffle_id').val() }
-    var number = { number: $('input:hidden[name=number]').val() }
-    var play = { play: $('input:text[name=play]').val() }
-    var amount = { amount: $('#amount').val() }
 
-    /* Componente VueJS */
-    // register
-    Vue.component('my-ticket', {
-      template: '<div class="col-lg-4"><h3>Ticket</h3></div>'
-    });
-
-    // create a root instance
-    new Vue({
-      el: '#ticketplay'
-    })
-});
-</script>
 <script type="text/javascript">
   $(function(){
 
@@ -352,33 +330,6 @@
       });
 
     });
-
-
-
-
-    /*$( function() {
-      $('td').click( function() {
-
-        $(this).parents('table').find('td').each( function( index, element ) {
-          //$(this).removeClass('bg-success');
-        });
-      });
-    });*/
-
-    /*var plays = new Array();
-
-    $('td img').click(function(){
-      console.log( $(this).attr('data-value') + '-' + $(this).attr('data-name') );
-
-      $('#play').val($(this).attr('data-name'));
-      $('#amount').focus();
-    });
-
-    $('.fa-plus-circle').click(function(){
-      plays.push( new Array( $('#play').val(), $('#amount').val() ) );
-      $('#amount').val('');
-      console.log(plays);
-    });*/
 
   });
 </script>

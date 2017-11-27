@@ -11,17 +11,5 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.scripts([
-            'jquery-3.2.1.min.js',
-            'moment.js',
-            'holder.min.js'
-            'popper.min.js',
-            'bootstrap.min.js',
-            'popover.js',
-            'moment.js',
-            'axios.js',
-            'vue.js',
-            'chart.js',
-            'sweetalert.min.js'
-            ], 'public/js');
-   // .sass('resources/assets/sass/app.scss', 'public/css');
+mix.js('resources/assets/js/app.js', 'public/js')
+   .sass('resources/assets/sass/app.scss', 'public/css');

@@ -27,4 +27,4 @@ class AppServiceProvider extends ServiceProvider
         return base_path().'/public_html';
       });
     }
-  }
+}
