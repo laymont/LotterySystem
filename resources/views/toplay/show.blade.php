@@ -1,0 +1,43 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="container-fluid">
+  <a class="btn btn-sm btn-info float-right" href="{{ url('home') }}" title="Regresar"> <i class="fa fa-chevron-left" aria-hidden="true"></i> Regresar</a>&nbsp;
+  <div class="row">
+    <div class="col-lg-6">
+
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Ticket</h4>
+          <h6 class="card-subtitle"># {{ $viewticket[0]->ticket }} Sorteo: {{ $viewticket[0]->day }}-{{ $viewticket[0]->hour }}</h6>
+          <table class="table table-condensed table-bordered table-hover">
+            <caption>Ticket {{ $viewticket[0]->ticket }}</caption>
+            <thead>
+              <tr>
+                <th>Numero</th>
+                <th>Monto</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach($viewticket as $item)
+              <tr>
+                <td class="text-center">
+                  <img class="img-fluid" width="80px" src="{{ asset('img/animalitos/'.$animals[$item->number].'.png') }}" alt="{{ $animals[$item->number] }}" title="{{ $animals[$item->number] }}">
+                </td>
+                <td class="text-right">Bs. {{ number_format($item->amount,2,",",".") }}</td>
+              </tr>
+              @endforeach
+            </tbody>
+            <tfoot>
+              <tr>
+                <td class="text-right lead"><strong>Total</strong></td>
+                <td class="text-right lead"><strong>{{ number_format($viewticket->sum('amount'),2,",",".") }}</strong></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+@endsection

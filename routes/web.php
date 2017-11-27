@@ -1,0 +1,112 @@
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('/', function () {
+  $animals = collect(\Config::get('constants.animals'));
+  /* Mas Jugado */
+  $avgPlay = \DB::table('plays')
+  ->selectRaw('number, count(number) as `times`')
+  ->groupBy('number')
+  ->havingRaw('number > 1')
+  ->orderBy('times','DESC')
+  ->limit(10)
+  ->get();
+
+  foreach ($avgPlay as $value) {
+    $labelPlay[] = $animals->get($value->number);
+    $timesPlay[] = $value->times;
+  }
+
+
+  $chartjsPlay = app()->chartjs
+  ->name('timesplay')
+  ->type('bar')
+      // ->size(['width' => 400, 'height' => 200])
+  ->labels($labelPlay)
+  ->datasets([
+    [
+      "label" => "Los 10 mas Jugados",
+      'backgroundColor' => [
+        'rgba(0, 255, 0, 0.3)',
+        'rgba(100, 162, 235, 0.3)',
+        'rgba(90, 100, 132, 0.3)',
+        'rgba(255, 255, 0, 0.3)',
+        'rgba(255, 0, 0, 0.3)',
+        'rgba(139, 139, 0, 0.3)',
+        'rgba(144, 238, 144, 0.3)',
+        'rgba(0, 255, 255, 0.3)',
+        'rgba(255, 99, 132, 0.3)',
+        'rgba(54, 162, 235, 0.3)'
+      ],
+      'borderColor' => "rgba(38, 185, 154, 0.7)",
+      "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+      "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+      "pointHoverBackgroundColor" => "#fff",
+      "pointHoverBorderColor" => "rgba(220,220,220,1)",
+      'data' => $timesPlay,
+    ]
+  ])
+  ->options([]);
+
+  return view('welcome', compact('chartjsPlay'));
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('confirmed/{id}', 'HomeController@confirmed')->name('confirmedpay');
+
+
+/* Informacion del Usuario */
+Route::resource('users', 'UserinfoController');
+
+Route::resource('roles','RoleUserController');
+Route::resource('lotteries', 'LotterieController');
+
+Route::resource('raffles', 'RaffleController');
+
+/* Cta Users */
+Route::resource('ctausers', 'CtauserController');
+Route::post('ctausers', 'CtauserController@store')->name('ctausers.store');
+Route::patch('ctausers/{id}/regain', 'CtauserController@retiro')->name('ctausers.regain');
+Route::patch('ctausers','CtauserController@addacount')->name('ctausers.addacount');
+
+Route::resource('regains', 'RegainController');
+
+/* toplay */
+Route::get('toplay/showtickets', 'PlayController@showtickets')->name('toplay.showtickets');
+Route::resource('toplay', 'PlayController');
+
+/* Mostrar Ticket */
+Route::get('ticket/{ticket}', function($ticket){
+  return $ticketview = \App\Play::where('ticket', $ticket)->get();
+});
+
+/* Monto Jugado */
+Route::get('_raffleamount', function (){
+  $amount = \DB::table('plays')
+  ->whereRaw(DB::raw('date_format(plays.date,"%Y-%m-%d") = current_date()'))
+  ->groupBy(DB::raw('plays.date'))
+  ->selectRaw('SUM(plays.amount) as amount')
+  ->get();
+  $amounts = array();
+  foreach ($amount as $value) {
+    array_push($amounts,$value->amount);
+  }
+  return array_sum($amounts);
+});
+
+Route::get('results/winners', 'ResultController@winners')->name('results.winners');
+Route::get('results/notifyposttime/{raffle_id}', 'ResultController@notifyposttime')->name('results.notifyposttime');
+Route::get('results/statistics','ResultController@statistics')->name('results.statistics');
+Route::resource('results', 'ResultController');
