@@ -145,56 +145,56 @@
 
     <div class="col-lg-8">
       <h3>Apuesta</h3>
+      <form id="fixeddata">
+        <input type="hidden" v-model="user_id" name="user_id" value="{{ Auth::id() }}"> {{-- Id de Usuario --}}
 
-      <input type="hidden" v-model="user_id" name="user_id" value="{{ Auth::id() }}"> {{-- Id de Usuario --}}
-
-      <div class="form-group">
-        {!! Form::label('date', 'Fecha', ['class' => 'control-label']) !!}
-        {!! Form::hidden('available', $balance[0]->amount) !!}
-        <div class="col-lg-6">
-          @if ( \Carbon\Carbon::now()->format('H') > '19') {{-- Si son mas de las 7pm no se puede jugar hoy  --}}
-          <p class="lead">Jugando para el sorteo del {{ \Carbon\Carbon::now(1)->format('Y-m-d') }}</p>
-          {!! Form::hidden('date', \Carbon\Carbon::now(1)->format('Y-m-d')) !!}
-          @else
-          <p class="lead">Jugando para el sorteo del {{ \Carbon\Carbon::now() }}</p>
-          {!! Form::hidden('date', \Carbon\Carbon::now()) !!}
-          @endif
+        <div class="form-group">
+          {!! Form::label('date', 'Fecha', ['class' => 'control-label']) !!}
+          {!! Form::hidden('available', $balance[0]->amount, ['v-model' => 'available']) !!}
+          <div class="col-lg-6">
+            @if ( \Carbon\Carbon::now()->format('H') > '19') {{-- Si son mas de las 7pm no se puede jugar hoy  --}}
+            <p class="lead">Jugando para el sorteo del {{ \Carbon\Carbon::now(1)->format('Y-m-d') }}</p>
+            {!! Form::hidden('date', \Carbon\Carbon::now(1)->format('Y-m-d'), ['v-model' => 'date']) !!}
+            @else
+            <p class="lead">Jugando para el sorteo del {{ \Carbon\Carbon::now() }}</p>
+            {!! Form::hidden('date', \Carbon\Carbon::now(), ['v-model' => 'date']) !!}
+            @endif
+          </div>
         </div>
-      </div>
 
-      <div class="form-group">
-        {!! Form::label('lottery_id', 'Loteria', ['class' => 'control-label']) !!}
-        <div class="col-lg-6">
-          {!! Form::select('lottery_id', $lottery, 1, ['class' => 'form-control']) !!}
+        <div class="form-group">
+          {!! Form::label('lottery_id', 'Loteria', ['class' => 'control-label']) !!}
+          <div class="col-lg-6">
+            {!! Form::select('lottery_id', $lottery, 1, ['class' => 'form-control', 'v-model' => 'lottery_id']) !!}
+          </div>
         </div>
-      </div>
 
-      <div class="form-group">
-        {!! Form::label('raffle_id', 'Sorteo', ['class' => 'control-label']) !!}
-        <div class="col-lg-6">
-          {!! Form::select('raffle_id', $raffles, 1, ['class' => 'form-control']) !!}
+        <div class="form-group">
+          {!! Form::label('raffle_id', 'Sorteo', ['class' => 'control-label']) !!}
+          <div class="col-lg-6">
+            {!! Form::select('raffle_id', $raffles, 1, ['class' => 'form-control', 'v-model' => 'raffle_id']) !!}
+          </div>
+          {{-- number --}}
+          {!! Form::hidden('number', null, ['v-model' => 'number']) !!}
         </div>
-        {{-- number --}}
-        {!! Form::hidden('number', null) !!}
-      </div>
 
-      <div class="form-group">
-        {!! Form::label('play', 'Jugada', ['class' => 'control-label']) !!}
-        <div class="col-lg-6">
-          {!! Form::text('play', null, ['class' => 'form-control','placeholder' => 'Jugada']) !!}
+        <div class="form-group">
+          {!! Form::label('play', 'Jugada', ['class' => 'control-label']) !!}
+          <div class="col-lg-6">
+            {!! Form::text('play', null, ['class' => 'form-control','placeholder' => 'Jugada', 'v-model' => 'play']) !!}
+          </div>
         </div>
-      </div>
 
-      <div class="form-group">
-        {!! Form::label('amount', 'monto', ['class'=>'control-label']) !!}
-        <div class="col-lg-6 form-inline">
-          {!! Form::number('amount', null, ['class' => 'form-control text-right', 'placeholder' => 'Monto de la Jugada', 'step' => '100']) !!}
-          &nbsp;&nbsp;&nbsp;&nbsp;
-          <button id="addMove" name="addMove" type="button" title="Add Play" class="btn btn-success"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add</button>
-          &nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="form-group">
+          {!! Form::label('amount', 'monto', ['class'=>'control-label']) !!}
+          <div class="col-lg-6 form-inline">
+            {!! Form::number('amount', null, ['class' => 'form-control text-right', 'placeholder' => 'Monto de la Jugada', 'step' => '100', 'v-model' => 'amount']) !!}
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <button id="addMove" name="addMove" type="button" title="Add Play" class="btn btn-success"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add</button>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+          </div>
         </div>
-      </div>
-
+      </form>
       <hr>
     </div>
 
@@ -210,11 +210,7 @@
       </div>
       @endif
       {{-- error --}}
-      {{-- Example component VueJS --}}
-      <div id="ticketplay">
-        <my-ticket></my-ticket>
-      </div>
-      {{-- Example component VueJS --}}
+
       {!! Form::open(['method' => 'POST', 'route'=> 'toplay.store', 'class' => 'form-horizontal','id' => 'playing']) !!}
       <h3>Total Apuesta</h3>
       <p class="lead text-right">{{ \Carbon\Carbon::now() }}</p>

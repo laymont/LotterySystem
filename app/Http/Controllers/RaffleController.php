@@ -51,6 +51,19 @@ class RaffleController extends Controller
       return view('raffles.show')->with('raffles', $raffles);
     }
 
+    public function raffleList($lottery)
+    {
+      $day = \Carbon\Carbon::now('America/Caracas')->format('D'); // Dia de la Semana
+      $hourActual = \Carbon\Carbon::now('America/Caracas')->format('H:m:s');
+
+      $raffles = Raffle::where('lottery_id', $lottery)
+      ->where('day',$day)
+      ->where('day','=', $day)
+      ->where('hour','>=', $hourActual)
+      ->pluck('hour','id');
+      return $raffles;
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

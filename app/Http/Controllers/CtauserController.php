@@ -51,7 +51,7 @@ class CtauserController extends Controller
       $abono->reference = $request->reference;
       $abono->save();
 
-      flash()->overlay('Este registro debe confirmarlo la Administración.', 'Abono Registrado');
+      alert()->warning('Abono Registrado', 'Este registro debe confirmarlo por la Administración.')->autoclose(30000);
 
       return redirect('home');
 
@@ -69,21 +69,26 @@ class CtauserController extends Controller
       ->where('payment','>=', $request->amount)
       ->first();
       if ($retiro == null) {
-        flash('No puede realizar el Retiro')->overlay();
+
+        alert()->error('Error', 'No puede realizar este retiro.')->autoclose(30000);
+
         return redirect('home');
       }
     }
 
     public function addacount(Request $request, $id)
     {
+      // dd($request->all());
+
       if ( Auth::user()->hasRole('admin') ) {
         $pay = Ctauser::where('user_id',$request->user_id)
         ->where('spent',0)
         ->first();
+        // dd($request->user_id);
         $saldo = $pay->payment;
         $abono = $saldo + $request->amount;
         $pay->payment = $abono;
-      // dd($abono);
+        // dd($abono);
         $pay->save();
         $payticket = Play::where('user_id', $request->user_id)
         ->where('code','=', $request->code)
@@ -92,10 +97,13 @@ class CtauserController extends Controller
         $payticket->pay = 1;
         $payticket->save();
 
-        flash('Ticket Pagado')->success();
+        alert()->success('Pago Realizado', 'Monto abonado a su cuenta')->autoclose(30000);
+
         return redirect('results/winners');
+
       }else {
-        flash('Imposible realizar esta acción')->warning();
+        alert()->warning('Advertencia', 'Imposible realizar esta acción.')->autoclose(30000);
+
         return redirect('results/winners');
       }
     }
@@ -114,11 +122,15 @@ class CtauserController extends Controller
      ->orderByDesc('payment_day')
      ->get();
      if ( $amounts->isEmpty() ){
-      flash()->overlay('Por favor abone saldo a la cuenta si desea Jugar', 'Sin Saldo');
+
+      alert()->warning('Sin saldo', 'No dispone de saldo.')->autoclose(30000);
+
       return redirect('home');
     }
     if ( $amounts[0]->confirmed == 0 and $amounts[0]->spent == 0 ){
-      flash('Abono sin confirmar.')->warning();
+
+      alert()->warning('Abono sin confirmar', 'Existe un abono a cuenta sin confirmación.')->autoclose(30000);
+
       return redirect('home');
     }
 

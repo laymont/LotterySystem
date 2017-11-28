@@ -75,15 +75,17 @@ Route::get('confirmed/{id}', 'HomeController@confirmed')->name('confirmedpay');
 Route::resource('users', 'UserinfoController');
 
 Route::resource('roles','RoleUserController');
+
 Route::resource('lotteries', 'LotterieController');
 
+Route::get('raffle_id/{lottery}', 'RaffleController@raffleList');
 Route::resource('raffles', 'RaffleController');
 
 /* Cta Users */
 Route::resource('ctausers', 'CtauserController');
 Route::post('ctausers', 'CtauserController@store')->name('ctausers.store');
 Route::patch('ctausers/{id}/regain', 'CtauserController@retiro')->name('ctausers.regain');
-Route::patch('ctausers','CtauserController@addacount')->name('ctausers.addacount');
+Route::get('ctausers/{user_id}/pay','CtauserController@addacount')->name('ctausers.addacount');
 
 Route::resource('regains', 'RegainController');
 

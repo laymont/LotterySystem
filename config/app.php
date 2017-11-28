@@ -172,6 +172,7 @@ return [
         Laraveles\Spanish\SpanishServiceProvider::class,
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
+        Radic\BladeExtensions\BladeExtensionsServiceProvider::class,
 
         /*
          * Package Service Providers...

@@ -25,7 +25,7 @@
           <tr>
             <td>{{ $item->user->name }}</td>
             <td class="text-center">{{ $item->payment_day }}</td>
-            <td class="text-right">{{ $item->payment }}</td>
+            <td class="text-right">Bs. {{ number_format($item->payment,2,",",".") }}</td>
             <td>{{ $item->bank->name }}</td>
             <td class="text-center">{{ $item->type }}</td>
             <td class="text-center">{{ $item->reference }}</td>

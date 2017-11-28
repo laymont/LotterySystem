@@ -14,6 +14,7 @@
           <th>Usuario</th>
           <th>Loteria</th>
           <th>Sorteo</th>
+          <th>Monto</th>
           <th>Resultado</th>
           <th>Gano</th>
           <th>Acciones</th>
@@ -22,17 +23,20 @@
       <tbody>
         @foreach ($winners as $item)
         <tr>
-          <td>{{ $item->date }}</td>
-          <td>{{ $item->ticket }}</td>
-          <td>{{ $item->code }}</td>
-          <td>{{ $item->user_id }}</td>
-          <td>{{ $item->lottery_id }}</td>
-          <td>{{ $item->resultraffle }}</td>
-          <td>{{ $item->result }}</td>
-          <td class="text-right">{{ number_format($item->gain,2,",",".") }}</td>
-          <td>
+          <td class="text-center align-middle">{{ $item->date }}</td>
+          <td class="text-center align-middle">{{ $item->ticket }}</td>
+          <td class="text-center align-middle">{{ $item->code }}</td>
+          <td class="text-center align-middle">{{ $item->user_id }}</td>
+          <td class="text-center align-middle">{{ $item->lottery_id }}</td>
+          <td class="text-center align-middle">{{ $item->resultraffle }}</td>
+          <td class="text-right align-middle">Bs. {{ number_format($item->amount,2,",",".") }}</td>
+          <td  class="text-center align-middle">
+            <img class="img-fluid" width="90px" src="{{ asset('img/animalitos/'.$animals->get($item->result).'.png') }}" alt="{{ $animals->get($item->result) }}" title="{{ $animals->get($item->result) }}">
+          </td>
+          <td class="text-right align-middle">Bs. {{ number_format($item->gain,2,",",".") }}</td>
+          <td class="align-middle">
             @if ($item->pay == 0)
-            {!! Form::open(['route'=>'ctausers.addacount']) !!}
+            {!! Form::open(['route' => ['ctausers.addacount', $item->user_id], 'method' => 'GET']) !!}
             {!! Form::hidden('user_id', $item->user_id) !!}
             {!! Form::hidden('code', $item->code) !!}
             {!! Form::hidden('amount', $item->gain) !!}
@@ -41,7 +45,6 @@
             @else
             <span>Pago/Abonado a Cta.</span>
             @endif
-
           </td>
         </tr>
         @endforeach

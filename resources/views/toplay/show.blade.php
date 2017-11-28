@@ -14,6 +14,7 @@
             <caption>Ticket {{ $viewticket[0]->ticket }}</caption>
             <thead>
               <tr>
+                <th>Hora</th>
                 <th>Numero</th>
                 <th>Monto</th>
               </tr>
@@ -21,6 +22,7 @@
             <tbody>
               @foreach($viewticket as $item)
               <tr>
+                <td>{{ $item->hour }}</td>
                 <td class="text-center">
                   <img class="img-fluid" width="80px" src="{{ asset('img/animalitos/'.$animals[$item->number].'.png') }}" alt="{{ $animals[$item->number] }}" title="{{ $animals[$item->number] }}">
                 </td>

@@ -70,7 +70,13 @@
               @foreach ($withoutReport as $item)
               <tr>
                 <td>{{ $item->day }}</td>
-                <td><a class="btn btn-sm btn-info" href="{{ route('results.notifyposttime', ['raffle_id' => $item->id]) }}" title="Notificar"> {{ $item->hour }}</a></td>
+                <td>
+                  @if(Auth::user()->hasRole('admin'))
+                  <a class="btn btn-sm btn-info" href="{{ route('results.notifyposttime', ['raffle_id' => $item->id]) }}" title="Notificar"> {{ $item->hour }}</a>
+                  @else
+                  {{ $item->hour }}
+                  @endif
+                </td>
               </tr>
               @endforeach
             </tbody>

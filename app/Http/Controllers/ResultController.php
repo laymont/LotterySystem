@@ -111,11 +111,16 @@ class ResultController extends Controller
 
     public function winners()
     {
-      $winners = DB::table('plays')->join('results','plays.raffle_id','=','results.raffle_id')
-      ->whereRaw('results.result = plays.number and date_format(results.date,"%Y-%m-%d") = current_date')->selectRaw('plays.id, results.date, plays.ticket, plays.code, plays.user_id, plays.lottery_id, plays.raffle_id as playraffle,plays.number, plays.amount,results.lottery_id as resultlottery, results.raffle_id as resultraffle, results.result,(plays.amount * 3) as gain, plays.pay')
+      $winners = DB::table('plays')
+      ->join('results','plays.raffle_id','=','results.raffle_id')
+      ->join('lotteries','plays.lottery_id','=','lotteries.id')
+      ->whereRaw('results.result = plays.number and date_format(results.date,"%Y-%m-%d") = current_date')
+      ->selectRaw('plays.id, results.date, plays.ticket, plays.code, plays.user_id, plays.lottery_id, plays.raffle_id as playraffle,plays.number, plays.amount,results.lottery_id as resultlottery, results.raffle_id as resultraffle, results.result,(plays.amount * lotteries.relation) as gain, plays.pay')
       ->get();
 
-      return view('results.winners', compact('winners'));
+      $animals = collect(\Config::get('constants.animals'));
+
+      return view('results.winners', compact('winners','animals'));
     }
 
     public function statistics()

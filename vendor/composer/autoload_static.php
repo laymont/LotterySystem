@@ -15,8 +15,11 @@ class ComposerStaticInit868e171187baa1103bb1842f21345fd8
         'bd9634f2d41831496de0d3dfe4c94881' => __DIR__ . '/..' . '/symfony/polyfill-php56/bootstrap.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
+        'f79e58dc028ebda1a58ef6c5228534ea' => __DIR__ . '/..' . '/gabrielelana/byte-units/src/ByteUnits/functions.php',
+        '65fec9ebcfbb3cbb4fd0d519687aea01' => __DIR__ . '/..' . '/danielstjules/stringy/src/Create.php',
         'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
+        '91e575ba1510c6936c51dce36832ae6e' => __DIR__ . '/..' . '/laradic/support/src/helpers.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         '4a1f389d6ce373bda9e57857d3b61c84' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/helpers.php',
@@ -45,6 +48,7 @@ class ComposerStaticInit868e171187baa1103bb1842f21345fd8
         'U' => 
         array (
             'UxWeb\\SweetAlert\\' => 17,
+            'Underscore\\' => 11,
         ),
         'T' => 
         array (
@@ -68,10 +72,12 @@ class ComposerStaticInit868e171187baa1103bb1842f21345fd8
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
             'SuperClosure\\' => 13,
+            'Stringy\\' => 8,
         ),
         'R' => 
         array (
             'Ramsey\\Uuid\\' => 12,
+            'Radic\\BladeExtensions\\' => 22,
         ),
         'P' => 
         array (
@@ -80,6 +86,7 @@ class ComposerStaticInit868e171187baa1103bb1842f21345fd8
             'Psr\\Log\\' => 8,
             'Psr\\Container\\' => 14,
             'PhpParser\\' => 10,
+            'Patchwork\\' => 10,
         ),
         'M' => 
         array (
@@ -91,6 +98,7 @@ class ComposerStaticInit868e171187baa1103bb1842f21345fd8
             'League\\Flysystem\\' => 17,
             'Laraveles\\Spanish\\' => 18,
             'Laravel\\Tinker\\' => 15,
+            'Laradic\\Support\\' => 16,
         ),
         'I' => 
         array (
@@ -117,11 +125,13 @@ class ComposerStaticInit868e171187baa1103bb1842f21345fd8
         'C' => 
         array (
             'Cron\\' => 5,
+            'Composer\\Semver\\' => 16,
             'Collective\\Html\\' => 16,
             'Carbon\\' => 7,
         ),
         'B' => 
         array (
+            'ByteUnits\\' => 10,
             'Barryvdh\\Debugbar\\' => 18,
         ),
         'A' => 
@@ -159,6 +169,11 @@ class ComposerStaticInit868e171187baa1103bb1842f21345fd8
         'UxWeb\\SweetAlert\\' => 
         array (
             0 => __DIR__ . '/..' . '/uxweb/sweet-alert/src/SweetAlert',
+        ),
+        'Underscore\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/anahkiasen/underscore-php/src',
+            1 => __DIR__ . '/..' . '/anahkiasen/underscore-php/tests',
         ),
         'TijsVerkoyen\\CssToInlineStyles\\' => 
         array (
@@ -228,9 +243,17 @@ class ComposerStaticInit868e171187baa1103bb1842f21345fd8
         array (
             0 => __DIR__ . '/..' . '/jeremeamia/SuperClosure/src',
         ),
+        'Stringy\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/danielstjules/stringy/src',
+        ),
         'Ramsey\\Uuid\\' => 
         array (
             0 => __DIR__ . '/..' . '/ramsey/uuid/src',
+        ),
+        'Radic\\BladeExtensions\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/radic/blade-extensions/src',
         ),
         'Psy\\' => 
         array (
@@ -252,6 +275,10 @@ class ComposerStaticInit868e171187baa1103bb1842f21345fd8
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
         ),
+        'Patchwork\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/patchwork/utf8/src/Patchwork',
+        ),
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
@@ -271,6 +298,10 @@ class ComposerStaticInit868e171187baa1103bb1842f21345fd8
         'Laravel\\Tinker\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/tinker/src',
+        ),
+        'Laradic\\Support\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laradic/support/src',
         ),
         'Illuminate\\' => 
         array (
@@ -316,6 +347,10 @@ class ComposerStaticInit868e171187baa1103bb1842f21345fd8
         array (
             0 => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron',
         ),
+        'Composer\\Semver\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/composer/semver/src',
+        ),
         'Collective\\Html\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravelcollective/html/src',
@@ -323,6 +358,10 @@ class ComposerStaticInit868e171187baa1103bb1842f21345fd8
         'Carbon\\' => 
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
+        ),
+        'ByteUnits\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/gabrielelana/byte-units/src/ByteUnits',
         ),
         'Barryvdh\\Debugbar\\' => 
         array (
@@ -463,6 +502,15 @@ class ComposerStaticInit868e171187baa1103bb1842f21345fd8
         'Barryvdh\\Debugbar\\Twig\\Extension\\Stopwatch' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/Twig/Extension/Stopwatch.php',
         'Barryvdh\\Debugbar\\Twig\\Node\\StopwatchNode' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/Twig/Node/StopwatchNode.php',
         'Barryvdh\\Debugbar\\Twig\\TokenParser\\StopwatchTokenParser' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/Twig/TokenParser/StopwatchTokenParser.php',
+        'ByteUnits\\Binary' => __DIR__ . '/..' . '/gabrielelana/byte-units/src/ByteUnits/Binary.php',
+        'ByteUnits\\ConversionException' => __DIR__ . '/..' . '/gabrielelana/byte-units/src/ByteUnits/ConversionException.php',
+        'ByteUnits\\Formatter' => __DIR__ . '/..' . '/gabrielelana/byte-units/src/ByteUnits/Formatter.php',
+        'ByteUnits\\Metric' => __DIR__ . '/..' . '/gabrielelana/byte-units/src/ByteUnits/Metric.php',
+        'ByteUnits\\NegativeBytesException' => __DIR__ . '/..' . '/gabrielelana/byte-units/src/ByteUnits/NegativeBytesException.php',
+        'ByteUnits\\ParseException' => __DIR__ . '/..' . '/gabrielelana/byte-units/src/ByteUnits/ParseException.php',
+        'ByteUnits\\Parser' => __DIR__ . '/..' . '/gabrielelana/byte-units/src/ByteUnits/Parser.php',
+        'ByteUnits\\PowerScale' => __DIR__ . '/..' . '/gabrielelana/byte-units/src/ByteUnits/PowerScale.php',
+        'ByteUnits\\System' => __DIR__ . '/..' . '/gabrielelana/byte-units/src/ByteUnits/System.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
         'Carbon\\Exceptions\\InvalidDateException' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
@@ -473,6 +521,14 @@ class ComposerStaticInit868e171187baa1103bb1842f21345fd8
         'Collective\\Html\\HtmlBuilder' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlBuilder.php',
         'Collective\\Html\\HtmlFacade' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlFacade.php',
         'Collective\\Html\\HtmlServiceProvider' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlServiceProvider.php',
+        'Composer\\Semver\\Comparator' => __DIR__ . '/..' . '/composer/semver/src/Comparator.php',
+        'Composer\\Semver\\Constraint\\AbstractConstraint' => __DIR__ . '/..' . '/composer/semver/src/Constraint/AbstractConstraint.php',
+        'Composer\\Semver\\Constraint\\Constraint' => __DIR__ . '/..' . '/composer/semver/src/Constraint/Constraint.php',
+        'Composer\\Semver\\Constraint\\ConstraintInterface' => __DIR__ . '/..' . '/composer/semver/src/Constraint/ConstraintInterface.php',
+        'Composer\\Semver\\Constraint\\EmptyConstraint' => __DIR__ . '/..' . '/composer/semver/src/Constraint/EmptyConstraint.php',
+        'Composer\\Semver\\Constraint\\MultiConstraint' => __DIR__ . '/..' . '/composer/semver/src/Constraint/MultiConstraint.php',
+        'Composer\\Semver\\Semver' => __DIR__ . '/..' . '/composer/semver/src/Semver.php',
+        'Composer\\Semver\\VersionParser' => __DIR__ . '/..' . '/composer/semver/src/VersionParser.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/CronExpression.php',
         'Cron\\DayOfMonthField' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/DayOfMonthField.php',
@@ -1917,6 +1973,25 @@ class ComposerStaticInit868e171187baa1103bb1842f21345fd8
         'Laracasts\\Flash\\Message' => __DIR__ . '/..' . '/laracasts/flash/src/Laracasts/Flash/Message.php',
         'Laracasts\\Flash\\OverlayMessage' => __DIR__ . '/..' . '/laracasts/flash/src/Laracasts/Flash/OverlayMessage.php',
         'Laracasts\\Flash\\SessionStore' => __DIR__ . '/..' . '/laracasts/flash/src/Laracasts/Flash/SessionStore.php',
+        'Laradic\\Support\\Arr' => __DIR__ . '/..' . '/laradic/support/src/Arr.php',
+        'Laradic\\Support\\Bench' => __DIR__ . '/..' . '/laradic/support/src/Bench.php',
+        'Laradic\\Support\\Byte' => __DIR__ . '/..' . '/laradic/support/src/Byte.php',
+        'Laradic\\Support\\Path' => __DIR__ . '/..' . '/laradic/support/src/Path.php',
+        'Laradic\\Support\\Str' => __DIR__ . '/..' . '/laradic/support/src/Str.php',
+        'Laradic\\Support\\Traits\\Bootable' => __DIR__ . '/..' . '/laradic/support/src/Traits/Bootable.php',
+        'Laradic\\Support\\Traits\\ConfigTrait' => __DIR__ . '/..' . '/laradic/support/src/Traits/ConfigTrait.php',
+        'Laradic\\Support\\Traits\\ContainerTrait' => __DIR__ . '/..' . '/laradic/support/src/Traits/ContainerTrait.php',
+        'Laradic\\Support\\Traits\\DotArrayObjectTrait' => __DIR__ . '/..' . '/laradic/support/src/Traits/DotArrayObjectTrait.php',
+        'Laradic\\Support\\Traits\\DotArrayTrait' => __DIR__ . '/..' . '/laradic/support/src/Traits/DotArrayTrait.php',
+        'Laradic\\Support\\Traits\\EventTrait' => __DIR__ . '/..' . '/laradic/support/src/Traits/EventTrait.php',
+        'Laradic\\Support\\Traits\\Extendable' => __DIR__ . '/..' . '/laradic/support/src/Traits/Extendable.php',
+        'Laradic\\Support\\Traits\\NamespacedItemResolver' => __DIR__ . '/..' . '/laradic/support/src/Traits/NamespacedItemResolver.php',
+        'Laradic\\Support\\Traits\\NamespacedPackageTrait' => __DIR__ . '/..' . '/laradic/support/src/Traits/NamespacedPackageTrait.php',
+        'Laradic\\Support\\Traits\\Observable' => __DIR__ . '/..' . '/laradic/support/src/Traits/Observable.php',
+        'Laradic\\Support\\Traits\\PathTrait' => __DIR__ . '/..' . '/laradic/support/src/Traits/PathTrait.php',
+        'Laradic\\Support\\Traits\\StaticEventTrait' => __DIR__ . '/..' . '/laradic/support/src/Traits/StaticEventTrait.php',
+        'Laradic\\Support\\Util' => __DIR__ . '/..' . '/laradic/support/src/Util.php',
+        'Laradic\\Support\\Vendor\\Stringy' => __DIR__ . '/..' . '/laradic/support/src/Vendor/Stringy.php',
         'Laravel\\Tinker\\ClassAliasAutoloader' => __DIR__ . '/..' . '/laravel/tinker/src/ClassAliasAutoloader.php',
         'Laravel\\Tinker\\Console\\TinkerCommand' => __DIR__ . '/..' . '/laravel/tinker/src/Console/TinkerCommand.php',
         'Laravel\\Tinker\\TinkerCaster' => __DIR__ . '/..' . '/laravel/tinker/src/TinkerCaster.php',
@@ -2177,6 +2252,7 @@ class ComposerStaticInit868e171187baa1103bb1842f21345fd8
         'Monolog\\Processor\\UidProcessor' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Processor/UidProcessor.php',
         'Monolog\\Processor\\WebProcessor' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Processor/WebProcessor.php',
         'Monolog\\Registry' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Registry.php',
+        'Normalizer' => __DIR__ . '/..' . '/patchwork/utf8/src/Normalizer.php',
         'PHPExcel' => __DIR__ . '/..' . '/phpoffice/phpexcel/Classes/PHPExcel.php',
         'PHPExcel_Autoloader' => __DIR__ . '/..' . '/phpoffice/phpexcel/Classes/PHPExcel/Autoloader.php',
         'PHPExcel_Best_Fit' => __DIR__ . '/..' . '/phpoffice/phpexcel/Classes/PHPExcel/Shared/trend/bestFitClass.php',
@@ -2748,6 +2824,16 @@ class ComposerStaticInit868e171187baa1103bb1842f21345fd8
         'PHP_Token_YIELD' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD_FROM' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'Parsedown' => __DIR__ . '/..' . '/erusev/parsedown/Parsedown.php',
+        'Patchwork\\PHP\\Shim\\Iconv' => __DIR__ . '/..' . '/patchwork/utf8/src/Patchwork/PHP/Shim/Iconv.php',
+        'Patchwork\\PHP\\Shim\\Intl' => __DIR__ . '/..' . '/patchwork/utf8/src/Patchwork/PHP/Shim/Intl.php',
+        'Patchwork\\PHP\\Shim\\Mbstring' => __DIR__ . '/..' . '/patchwork/utf8/src/Patchwork/PHP/Shim/Mbstring.php',
+        'Patchwork\\PHP\\Shim\\Normalizer' => __DIR__ . '/..' . '/patchwork/utf8/src/Patchwork/PHP/Shim/Normalizer.php',
+        'Patchwork\\PHP\\Shim\\Xml' => __DIR__ . '/..' . '/patchwork/utf8/src/Patchwork/PHP/Shim/Xml.php',
+        'Patchwork\\TurkishUtf8' => __DIR__ . '/..' . '/patchwork/utf8/src/Patchwork/TurkishUtf8.php',
+        'Patchwork\\Utf8' => __DIR__ . '/..' . '/patchwork/utf8/src/Patchwork/Utf8.php',
+        'Patchwork\\Utf8\\BestFit' => __DIR__ . '/..' . '/patchwork/utf8/src/Patchwork/Utf8/BestFit.php',
+        'Patchwork\\Utf8\\Bootup' => __DIR__ . '/..' . '/patchwork/utf8/src/Patchwork/Utf8/Bootup.php',
+        'Patchwork\\Utf8\\WindowsStreamWrapper' => __DIR__ . '/..' . '/patchwork/utf8/src/Patchwork/Utf8/WindowsStreamWrapper.php',
         'PharIo\\Manifest\\Application' => __DIR__ . '/..' . '/phar-io/manifest/src/values/Application.php',
         'PharIo\\Manifest\\ApplicationName' => __DIR__ . '/..' . '/phar-io/manifest/src/values/ApplicationName.php',
         'PharIo\\Manifest\\Author' => __DIR__ . '/..' . '/phar-io/manifest/src/values/Author.php',
@@ -3250,6 +3336,51 @@ class ComposerStaticInit868e171187baa1103bb1842f21345fd8
         'Psy\\VersionUpdater\\GitHubChecker' => __DIR__ . '/..' . '/psy/psysh/src/Psy/VersionUpdater/GitHubChecker.php',
         'Psy\\VersionUpdater\\IntervalChecker' => __DIR__ . '/..' . '/psy/psysh/src/Psy/VersionUpdater/IntervalChecker.php',
         'Psy\\VersionUpdater\\NoopChecker' => __DIR__ . '/..' . '/psy/psysh/src/Psy/VersionUpdater/NoopChecker.php',
+        'Radic\\BladeExtensions\\BladeExtensions' => __DIR__ . '/..' . '/radic/blade-extensions/src/BladeExtensions.php',
+        'Radic\\BladeExtensions\\BladeExtensionsServiceProvider' => __DIR__ . '/..' . '/radic/blade-extensions/src/BladeExtensionsServiceProvider.php',
+        'Radic\\BladeExtensions\\Contracts\\BladeExtensions' => __DIR__ . '/..' . '/radic/blade-extensions/src/Contracts/BladeExtensions.php',
+        'Radic\\BladeExtensions\\Contracts\\DirectiveRegistry' => __DIR__ . '/..' . '/radic/blade-extensions/src/Contracts/DirectiveRegistry.php',
+        'Radic\\BladeExtensions\\Contracts\\HelperRepository' => __DIR__ . '/..' . '/radic/blade-extensions/src/Contracts/HelperRepository.php',
+        'Radic\\BladeExtensions\\DirectiveRegistry' => __DIR__ . '/..' . '/radic/blade-extensions/src/DirectiveRegistry.php',
+        'Radic\\BladeExtensions\\Directives\\AbstractDirective' => __DIR__ . '/..' . '/radic/blade-extensions/src/Directives/AbstractDirective.php',
+        'Radic\\BladeExtensions\\Directives\\BreakDirective' => __DIR__ . '/..' . '/radic/blade-extensions/src/Directives/BreakDirective.php',
+        'Radic\\BladeExtensions\\Directives\\BreakpointDirective' => __DIR__ . '/..' . '/radic/blade-extensions/src/Directives/BreakpointDirective.php',
+        'Radic\\BladeExtensions\\Directives\\ContinueDirective' => __DIR__ . '/..' . '/radic/blade-extensions/src/Directives/ContinueDirective.php',
+        'Radic\\BladeExtensions\\Directives\\DirectiveInterface' => __DIR__ . '/..' . '/radic/blade-extensions/src/Directives/DirectiveInterface.php',
+        'Radic\\BladeExtensions\\Directives\\DumpDirective' => __DIR__ . '/..' . '/radic/blade-extensions/src/Directives/DumpDirective.php',
+        'Radic\\BladeExtensions\\Directives\\ElseIfSectionDirective' => __DIR__ . '/..' . '/radic/blade-extensions/src/Directives/ElseIfSectionDirective.php',
+        'Radic\\BladeExtensions\\Directives\\EmbedDirective' => __DIR__ . '/..' . '/radic/blade-extensions/src/Directives/EmbedDirective.php',
+        'Radic\\BladeExtensions\\Directives\\EndIfSectionDirective' => __DIR__ . '/..' . '/radic/blade-extensions/src/Directives/EndIfSectionDirective.php',
+        'Radic\\BladeExtensions\\Directives\\EndforeachDirective' => __DIR__ . '/..' . '/radic/blade-extensions/src/Directives/EndforeachDirective.php',
+        'Radic\\BladeExtensions\\Directives\\EndmacroDirective' => __DIR__ . '/..' . '/radic/blade-extensions/src/Directives/EndmacroDirective.php',
+        'Radic\\BladeExtensions\\Directives\\EndmarkdownDirective' => __DIR__ . '/..' . '/radic/blade-extensions/src/Directives/EndmarkdownDirective.php',
+        'Radic\\BladeExtensions\\Directives\\EndminifyDirective' => __DIR__ . '/..' . '/radic/blade-extensions/src/Directives/EndminifyDirective.php',
+        'Radic\\BladeExtensions\\Directives\\EndspacelessDirective' => __DIR__ . '/..' . '/radic/blade-extensions/src/Directives/EndspacelessDirective.php',
+        'Radic\\BladeExtensions\\Directives\\ForeachDirective' => __DIR__ . '/..' . '/radic/blade-extensions/src/Directives/ForeachDirective.php',
+        'Radic\\BladeExtensions\\Directives\\IfSectionDirective' => __DIR__ . '/..' . '/radic/blade-extensions/src/Directives/IfSectionDirective.php',
+        'Radic\\BladeExtensions\\Directives\\MacroDirective' => __DIR__ . '/..' . '/radic/blade-extensions/src/Directives/MacroDirective.php',
+        'Radic\\BladeExtensions\\Directives\\MacrodefDirective' => __DIR__ . '/..' . '/radic/blade-extensions/src/Directives/MacrodefDirective.php',
+        'Radic\\BladeExtensions\\Directives\\MarkdownDirective' => __DIR__ . '/..' . '/radic/blade-extensions/src/Directives/MarkdownDirective.php',
+        'Radic\\BladeExtensions\\Directives\\MinifyDirective' => __DIR__ . '/..' . '/radic/blade-extensions/src/Directives/MinifyDirective.php',
+        'Radic\\BladeExtensions\\Directives\\SetDirective' => __DIR__ . '/..' . '/radic/blade-extensions/src/Directives/SetDirective.php',
+        'Radic\\BladeExtensions\\Directives\\SpacelessDirective' => __DIR__ . '/..' . '/radic/blade-extensions/src/Directives/SpacelessDirective.php',
+        'Radic\\BladeExtensions\\Directives\\UnsetDirective' => __DIR__ . '/..' . '/radic/blade-extensions/src/Directives/UnsetDirective.php',
+        'Radic\\BladeExtensions\\Exceptions\\InvalidDirectiveClassException' => __DIR__ . '/..' . '/radic/blade-extensions/src/Exceptions/InvalidDirectiveClassException.php',
+        'Radic\\BladeExtensions\\Facades\\BladeExtensions' => __DIR__ . '/..' . '/radic/blade-extensions/src/Facades/BladeExtensions.php',
+        'Radic\\BladeExtensions\\HelperRepository' => __DIR__ . '/..' . '/radic/blade-extensions/src/HelperRepository.php',
+        'Radic\\BladeExtensions\\Helpers\\BladeMatchers' => __DIR__ . '/..' . '/radic/blade-extensions/src/Helpers/BladeMatchers.php',
+        'Radic\\BladeExtensions\\Helpers\\DumpHelper' => __DIR__ . '/..' . '/radic/blade-extensions/src/Helpers/DumpHelper.php',
+        'Radic\\BladeExtensions\\Helpers\\Embed\\EmbedHelper' => __DIR__ . '/..' . '/radic/blade-extensions/src/Helpers/Embed/EmbedHelper.php',
+        'Radic\\BladeExtensions\\Helpers\\Embed\\EmbedStack' => __DIR__ . '/..' . '/radic/blade-extensions/src/Helpers/Embed/EmbedStack.php',
+        'Radic\\BladeExtensions\\Helpers\\Loop\\Loop' => __DIR__ . '/..' . '/radic/blade-extensions/src/Helpers/Loop/Loop.php',
+        'Radic\\BladeExtensions\\Helpers\\Loop\\LoopHelper' => __DIR__ . '/..' . '/radic/blade-extensions/src/Helpers/Loop/LoopHelper.php',
+        'Radic\\BladeExtensions\\Helpers\\Markdown\\CebeMarkdownParser' => __DIR__ . '/..' . '/radic/blade-extensions/src/Helpers/Markdown/CebeMarkdownParser.php',
+        'Radic\\BladeExtensions\\Helpers\\Markdown\\MarkdownHelper' => __DIR__ . '/..' . '/radic/blade-extensions/src/Helpers/Markdown/MarkdownHelper.php',
+        'Radic\\BladeExtensions\\Helpers\\Markdown\\MarkdownParserInterface' => __DIR__ . '/..' . '/radic/blade-extensions/src/Helpers/Markdown/MarkdownParserInterface.php',
+        'Radic\\BladeExtensions\\Helpers\\Minifier\\MinifierHelper' => __DIR__ . '/..' . '/radic/blade-extensions/src/Helpers/Minifier/MinifierHelper.php',
+        'Radic\\BladeExtensions\\Helpers\\Stacker' => __DIR__ . '/..' . '/radic/blade-extensions/src/Helpers/Stacker.php',
+        'Radic\\BladeExtensions\\Helpers\\UsesSections' => __DIR__ . '/..' . '/radic/blade-extensions/src/Helpers/UsesSections.php',
+        'Radic\\BladeExtensions\\Helpers\\Util' => __DIR__ . '/..' . '/radic/blade-extensions/src/Helpers/Util.php',
         'RaffleTableSeeder' => __DIR__ . '/../..' . '/database/seeds/RaffleTableSeeder.php',
         'Ramsey\\Uuid\\BinaryUtils' => __DIR__ . '/..' . '/ramsey/uuid/src/BinaryUtils.php',
         'Ramsey\\Uuid\\Builder\\DefaultUuidBuilder' => __DIR__ . '/..' . '/ramsey/uuid/src/Builder/DefaultUuidBuilder.php',
@@ -3390,6 +3521,8 @@ class ComposerStaticInit868e171187baa1103bb1842f21345fd8
         'SebastianBergmann\\RecursionContext\\InvalidArgumentException' => __DIR__ . '/..' . '/sebastian/recursion-context/src/InvalidArgumentException.php',
         'SebastianBergmann\\ResourceOperations\\ResourceOperations' => __DIR__ . '/..' . '/sebastian/resource-operations/src/ResourceOperations.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
+        'Stringy\\StaticStringy' => __DIR__ . '/..' . '/danielstjules/stringy/src/StaticStringy.php',
+        'Stringy\\Stringy' => __DIR__ . '/..' . '/danielstjules/stringy/src/Stringy.php',
         'SuperClosure\\Analyzer\\AstAnalyzer' => __DIR__ . '/..' . '/jeremeamia/SuperClosure/src/Analyzer/AstAnalyzer.php',
         'SuperClosure\\Analyzer\\ClosureAnalyzer' => __DIR__ . '/..' . '/jeremeamia/SuperClosure/src/Analyzer/ClosureAnalyzer.php',
         'SuperClosure\\Analyzer\\Token' => __DIR__ . '/..' . '/jeremeamia/SuperClosure/src/Analyzer/Token.php',
@@ -3952,6 +4085,34 @@ class ComposerStaticInit868e171187baa1103bb1842f21345fd8
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Property\\Property' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Property/Property.php',
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Processor' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Processor.php',
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Rule' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Rule.php',
+        'Underscore\\Dispatch' => __DIR__ . '/..' . '/anahkiasen/underscore-php/src/Dispatch.php',
+        'Underscore\\DispatchTest' => __DIR__ . '/..' . '/anahkiasen/underscore-php/tests/DispatchTest.php',
+        'Underscore\\Dummies\\DummyClass' => __DIR__ . '/..' . '/anahkiasen/underscore-php/tests/Dummies/DummyClass.php',
+        'Underscore\\Dummies\\DummyDefault' => __DIR__ . '/..' . '/anahkiasen/underscore-php/tests/Dummies/DummyDefault.php',
+        'Underscore\\Method' => __DIR__ . '/..' . '/anahkiasen/underscore-php/src/Method.php',
+        'Underscore\\MethodTest' => __DIR__ . '/..' . '/anahkiasen/underscore-php/tests/MethodTest.php',
+        'Underscore\\Methods\\ArraysMethods' => __DIR__ . '/..' . '/anahkiasen/underscore-php/src/Methods/ArraysMethods.php',
+        'Underscore\\Methods\\CollectionMethods' => __DIR__ . '/..' . '/anahkiasen/underscore-php/src/Methods/CollectionMethods.php',
+        'Underscore\\Methods\\FunctionsMethods' => __DIR__ . '/..' . '/anahkiasen/underscore-php/src/Methods/FunctionsMethods.php',
+        'Underscore\\Methods\\NumberMethods' => __DIR__ . '/..' . '/anahkiasen/underscore-php/src/Methods/NumberMethods.php',
+        'Underscore\\Methods\\ObjectMethods' => __DIR__ . '/..' . '/anahkiasen/underscore-php/src/Methods/ObjectMethods.php',
+        'Underscore\\Methods\\StringsMethods' => __DIR__ . '/..' . '/anahkiasen/underscore-php/src/Methods/StringsMethods.php',
+        'Underscore\\Parse' => __DIR__ . '/..' . '/anahkiasen/underscore-php/src/Parse.php',
+        'Underscore\\ParseTest' => __DIR__ . '/..' . '/anahkiasen/underscore-php/tests/ParseTest.php',
+        'Underscore\\Traits\\Repository' => __DIR__ . '/..' . '/anahkiasen/underscore-php/src/Traits/Repository.php',
+        'Underscore\\Types\\Arrays' => __DIR__ . '/..' . '/anahkiasen/underscore-php/src/Types/Arrays.php',
+        'Underscore\\Types\\ArraysTest' => __DIR__ . '/..' . '/anahkiasen/underscore-php/tests/Types/ArraysTest.php',
+        'Underscore\\Types\\Functions' => __DIR__ . '/..' . '/anahkiasen/underscore-php/src/Types/Functions.php',
+        'Underscore\\Types\\FunctionsTest' => __DIR__ . '/..' . '/anahkiasen/underscore-php/tests/Types/FunctionsTest.php',
+        'Underscore\\Types\\Number' => __DIR__ . '/..' . '/anahkiasen/underscore-php/src/Types/Number.php',
+        'Underscore\\Types\\NumberTest' => __DIR__ . '/..' . '/anahkiasen/underscore-php/tests/Types/NumberTest.php',
+        'Underscore\\Types\\Object' => __DIR__ . '/..' . '/anahkiasen/underscore-php/src/Types/Object.php',
+        'Underscore\\Types\\ObjectTest' => __DIR__ . '/..' . '/anahkiasen/underscore-php/tests/Types/ObjectTest.php',
+        'Underscore\\Types\\StringTest' => __DIR__ . '/..' . '/anahkiasen/underscore-php/tests/Types/StringTest.php',
+        'Underscore\\Types\\Strings' => __DIR__ . '/..' . '/anahkiasen/underscore-php/src/Types/Strings.php',
+        'Underscore\\Underscore' => __DIR__ . '/..' . '/anahkiasen/underscore-php/src/Underscore.php',
+        'Underscore\\UnderscoreTest' => __DIR__ . '/..' . '/anahkiasen/underscore-php/tests/UnderscoreTest.php',
+        'Underscore\\UnderscoreTestCase' => __DIR__ . '/..' . '/anahkiasen/underscore-php/tests/UnderscoreTestCase.php',
         'UserTableSeeder' => __DIR__ . '/../..' . '/database/seeds/UserTableSeeder.php',
         'UxWeb\\SweetAlert\\ConvertMessagesIntoSweetAlert' => __DIR__ . '/..' . '/uxweb/sweet-alert/src/SweetAlert/ConvertMessagesIntoSweetAlert.php',
         'UxWeb\\SweetAlert\\LaravelSessionStore' => __DIR__ . '/..' . '/uxweb/sweet-alert/src/SweetAlert/LaravelSessionStore.php',

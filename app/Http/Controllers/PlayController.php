@@ -28,7 +28,9 @@ class PlayController extends Controller
       ->groupBy('user_id')
       ->get();
       if ($balance->isEmpty()) {
-        flash('Sin Saldo para apostar')->overlay();
+
+        alert()->warning('Advertencia', 'Sin saldo para realizar apuestas.')->autoclose(30000);
+
         return redirect('home');
       }
 
@@ -45,7 +47,7 @@ class PlayController extends Controller
         // ->where('hour','>=', $hourActual)
         ->pluck('hour','id');
       }else {
-        /* Sorteos segun dia y hora */
+        /* Sorteos segun loteria dia y hora */
         $raffles = Raffle::where('day',$day)
         ->where('day','=', $day)
         ->where('hour','>=', $hourActual)
@@ -66,7 +68,19 @@ class PlayController extends Controller
      */
     public function create()
     {
-      //
+      $lottery_list = Lotterie::select('name','id')->get();
+      $day = \Carbon\Carbon::now('America/Caracas')->format('D'); // Dia de la Semana
+      $hourActual = \Carbon\Carbon::now('America/Caracas')->format('H:m:s');
+
+      $raffles = Raffle::where('lottery_id', 1)
+      ->where('day','=', $day)
+      // ->where('hour','>=', $hourActual)
+      ->select('id','hour')
+      ->get();
+
+      // $raffles = $raffles->toJson();
+
+      return view('toplay.play', compact('lottery_list','raffles'));
     }
 
     /**
@@ -77,6 +91,8 @@ class PlayController extends Controller
      */
     public function store(Request $request)
     {
+      dd($request->all());
+
       // validate
       $validator = $request->validate([
         'ticket' => 'required'
@@ -103,7 +119,7 @@ class PlayController extends Controller
 
       if ($total > $ctauser->payment) {
         /* No tiene saldo para realizar la apuesta */
-        alert()->error('Error Message', 'No tiene saldo suficiente para realizar esta apuesta')->autoclose(30000);
+        alert()->error('Error', 'No tiene saldo suficiente para realizar esta apuesta')->autoclose(30000);
         return redirect('home');
       }else {
         /* Puede realizar la apuesta; se descuenta el monto */

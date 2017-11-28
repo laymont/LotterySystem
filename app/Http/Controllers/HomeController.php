@@ -83,14 +83,13 @@ class HomeController extends Controller
           ->get();
           // dd($withoutReport);
           /* Collect Animals para resultados */
-          $animals = collect(['0'=>'Delfin','-1'=>'Ballena','01'=>'Carnero','02'=>'Toro','03'=>'Cienpies','04'=>'Alacran','05'=>'Leon','06'=>'Rana','07'=>'Perico','08'=>'Raton','09'=>'Aguila','10'=>'Tigre','11'=>'Gato','12'=>'Caballo','13'=>'Mono','14'=>'Paloma','15'=>'Zorro','16'=>'Oso','17'=>'Pavo','18'=>'Burro','19'=>'Chivo','20'=>'Cerdo','21'=>'Gallo','22'=>'Camello','23'=>'Cebra','24'=>'Iguana','25'=>'Gallina','26'=>'Vaca','27'=>'Perro','28'=>'Zamuro','29'=>'Elefante','30'=>'Caiman','31'=>'Lapa','32'=>'Ardilla','33'=>'Pescado','34'=>'Venado','35'=>'Jirafa','36'=>'Culebra']);
+          $animals = collect(\Config::get('constants.animals'));
 
           /* Autorizar a Administrador */
           /* Verificar si la informacion del Usuario esta completa */
           $info = User_info::where('user_id', Auth::user()->id)->count();
           if ( $info == 0){
-            flash('Informacion de Usuario Incompleta')->warning();
-            // alert()->flash('Informacion de Usuario Incompleta!', 'warning');
+            alert()->flash('Informacion de Usuario Incompleta!', 'warning')->autoclose(30000);
             $request->user()->authorizeRoles(['user', 'admin']);
             return view('home', compact('amountpending', 'tickets','withoutReport','animals'));
           }else {
@@ -107,7 +106,8 @@ class HomeController extends Controller
           ->first();
           $amount->confirmed = '1';
           $amount->save();
-          // flash('Abono confirmado')->success();
+
+          alert()->success('Confirmado', 'Abono confirmado')->autoclose(30000);
           return redirect('home');
         }
 
