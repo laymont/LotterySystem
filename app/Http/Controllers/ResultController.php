@@ -41,11 +41,12 @@ class ResultController extends Controller
        // dd( \Carbon\Carbon::now()->format('H') );
       $lottery = Lotterie::pluck('name','id');
       $raffle = Raffle::where('day','=', \Carbon\Carbon::now()->format('D'))
-      // ->where('hour','>=', \Carbon\Carbon::now()->format('H:m:s'))
+      ->where('hour','<=', \Carbon\Carbon::now()->format('H:m:s'))
       ->pluck('hour','id');
       // ->get();
       // dd($raffle);
       /* Resultados Pendientes */
+
       $withoutReport = DB::table('raffles')
       ->whereRaw('raffles.day =  date_format(current_date(),"%a") and raffles.hour < current_time()')
       ->whereRaw('raffles.id NOT IN(select results.raffle_id from results)')

@@ -76,12 +76,10 @@ class HomeController extends Controller
 
           /* Resultados Pendientes */
           $withoutReport = DB::table('raffles')
-          ->whereRaw('raffles.day =  date_format(current_date(),"%a") and raffles.hour < current_time()')
-          ->whereRaw('raffles.id NOT IN(select results.raffle_id from results)')
-          ->orderBy('raffles.day', 'ASC')
-          ->orderBy('raffles.hour', 'ASC')
+          ->whereRaw('raffles.`day`= DATE_FORMAT(CURRENT_DATE(),"%a") AND raffles.hour < current_time() AND raffles.id NOT IN(SELECT results.raffle_id FROM results WHERE DATE_FORMAT(results.date,"%d") = DATE_FORMAT(CURRENT_DATE(),"%d")
+          )')
           ->get();
-          // dd($withoutReport);
+
           /* Collect Animals para resultados */
           $animals = collect(\Config::get('constants.animals'));
 

@@ -20,6 +20,7 @@
     },
     "dependencies": {
         "2": "^1.0.1",
+        "vue-moment": "^3.0.0",
         "vue-select": "github:sagalbot/vue-select"
     }
 }

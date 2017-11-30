@@ -13,10 +13,10 @@
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4.0",
         "laraveles/spanish": "^1.0",
+        "radic/blade-extensions": "~7.0",
         "uxweb/sweet-alert": "^1.4",
         "yajra/laravel-datatables": "^1.0",
-        "yajra/laravel-datatables-oracle": "~8.0",
-        "radic/blade-extensions": "~7.0"
+        "yajra/laravel-datatables-oracle": "~8.0"
     },
     "require-dev": {
 		"barryvdh/laravel-debugbar": "^3.1",

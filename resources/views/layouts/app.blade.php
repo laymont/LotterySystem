@@ -107,9 +107,9 @@
 <script src="{{ asset('js/popper.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/chart.min.js') }}"></script>
+<script src="{{ asset('js/moment.js') }}"></script>
 <script src="{{ asset('js/axios.min.js') }}"></script>
 <script src="{{ asset('js/vue.js') }}"></script>
-<script src="{{ asset('js/vue-select.js') }}"></script>
 
 <script>
   // $('#flash-overlay-modal').modal();

@@ -91,7 +91,7 @@ class PlayController extends Controller
      */
     public function store(Request $request)
     {
-      dd($request->all());
+      dd( $request->ticket );
 
       // validate
       $validator = $request->validate([

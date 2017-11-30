@@ -1710,141 +1710,6 @@
         ]
     },
     {
-        "name": "laravel/framework",
-        "version": "v5.5.21",
-        "version_normalized": "5.5.21.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/laravel/framework.git",
-            "reference": "6321069a75723d88103526903d3192f0b231544a"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/laravel/framework/zipball/6321069a75723d88103526903d3192f0b231544a",
-            "reference": "6321069a75723d88103526903d3192f0b231544a",
-            "shasum": ""
-        },
-        "require": {
-            "doctrine/inflector": "~1.1",
-            "erusev/parsedown": "~1.6",
-            "ext-mbstring": "*",
-            "ext-openssl": "*",
-            "league/flysystem": "~1.0",
-            "monolog/monolog": "~1.12",
-            "mtdowling/cron-expression": "~1.0",
-            "nesbot/carbon": "~1.20",
-            "php": ">=7.0",
-            "psr/container": "~1.0",
-            "psr/simple-cache": "^1.0",
-            "ramsey/uuid": "~3.0",
-            "swiftmailer/swiftmailer": "~6.0",
-            "symfony/console": "~3.3",
-            "symfony/debug": "~3.3",
-            "symfony/finder": "~3.3",
-            "symfony/http-foundation": "~3.3",
-            "symfony/http-kernel": "~3.3",
-            "symfony/process": "~3.3",
-            "symfony/routing": "~3.3",
-            "symfony/var-dumper": "~3.3",
-            "tijsverkoyen/css-to-inline-styles": "~2.2",
-            "vlucas/phpdotenv": "~2.2"
-        },
-        "replace": {
-            "illuminate/auth": "self.version",
-            "illuminate/broadcasting": "self.version",
-            "illuminate/bus": "self.version",
-            "illuminate/cache": "self.version",
-            "illuminate/config": "self.version",
-            "illuminate/console": "self.version",
-            "illuminate/container": "self.version",
-            "illuminate/contracts": "self.version",
-            "illuminate/cookie": "self.version",
-            "illuminate/database": "self.version",
-            "illuminate/encryption": "self.version",
-            "illuminate/events": "self.version",
-            "illuminate/filesystem": "self.version",
-            "illuminate/hashing": "self.version",
-            "illuminate/http": "self.version",
-            "illuminate/log": "self.version",
-            "illuminate/mail": "self.version",
-            "illuminate/notifications": "self.version",
-            "illuminate/pagination": "self.version",
-            "illuminate/pipeline": "self.version",
-            "illuminate/queue": "self.version",
-            "illuminate/redis": "self.version",
-            "illuminate/routing": "self.version",
-            "illuminate/session": "self.version",
-            "illuminate/support": "self.version",
-            "illuminate/translation": "self.version",
-            "illuminate/validation": "self.version",
-            "illuminate/view": "self.version",
-            "tightenco/collect": "self.version"
-        },
-        "require-dev": {
-            "aws/aws-sdk-php": "~3.0",
-            "doctrine/dbal": "~2.5",
-            "filp/whoops": "^2.1.4",
-            "mockery/mockery": "~1.0",
-            "orchestra/testbench-core": "3.5.*",
-            "pda/pheanstalk": "~3.0",
-            "phpunit/phpunit": "~6.0",
-            "predis/predis": "^1.1.1",
-            "symfony/css-selector": "~3.3",
-            "symfony/dom-crawler": "~3.3"
-        },
-        "suggest": {
-            "aws/aws-sdk-php": "Required to use the SQS queue driver and SES mail driver (~3.0).",
-            "doctrine/dbal": "Required to rename columns and drop SQLite columns (~2.5).",
-            "ext-pcntl": "Required to use all features of the queue worker.",
-            "ext-posix": "Required to use all features of the queue worker.",
-            "fzaninotto/faker": "Required to use the eloquent factory builder (~1.4).",
-            "guzzlehttp/guzzle": "Required to use the Mailgun and Mandrill mail drivers and the ping methods on schedules (~6.0).",
-            "laravel/tinker": "Required to use the tinker console command (~1.0).",
-            "league/flysystem-aws-s3-v3": "Required to use the Flysystem S3 driver (~1.0).",
-            "league/flysystem-rackspace": "Required to use the Flysystem Rackspace driver (~1.0).",
-            "nexmo/client": "Required to use the Nexmo transport (~1.0).",
-            "pda/pheanstalk": "Required to use the beanstalk queue driver (~3.0).",
-            "predis/predis": "Required to use the redis cache and queue drivers (~1.0).",
-            "pusher/pusher-php-server": "Required to use the Pusher broadcast driver (~3.0).",
-            "symfony/css-selector": "Required to use some of the crawler integration testing tools (~3.3).",
-            "symfony/dom-crawler": "Required to use most of the crawler integration testing tools (~3.3).",
-            "symfony/psr-http-message-bridge": "Required to psr7 bridging features (~1.0)."
-        },
-        "time": "2017-11-14T15:08:13+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "5.5-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "files": [
-                "src/Illuminate/Foundation/helpers.php",
-                "src/Illuminate/Support/helpers.php"
-            ],
-            "psr-4": {
-                "Illuminate\\": "src/Illuminate/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Taylor Otwell",
-                "email": "taylor@laravel.com"
-            }
-        ],
-        "description": "The Laravel Framework.",
-        "homepage": "https://laravel.com",
-        "keywords": [
-            "framework",
-            "laravel"
-        ]
-    },
-    {
         "name": "fideloper/proxy",
         "version": "3.3.4",
         "version_normalized": "3.3.4.0",
@@ -3441,53 +3306,6 @@
                 "email": "me@mikevanriel.com"
             }
         ]
-    },
-    {
-        "name": "phpdocumentor/reflection-docblock",
-        "version": "4.1.1",
-        "version_normalized": "4.1.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
-            "reference": "2d3d238c433cf69caeb4842e97a3223a116f94b2"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/2d3d238c433cf69caeb4842e97a3223a116f94b2",
-            "reference": "2d3d238c433cf69caeb4842e97a3223a116f94b2",
-            "shasum": ""
-        },
-        "require": {
-            "php": "^7.0",
-            "phpdocumentor/reflection-common": "^1.0@dev",
-            "phpdocumentor/type-resolver": "^0.4.0",
-            "webmozart/assert": "^1.0"
-        },
-        "require-dev": {
-            "mockery/mockery": "^0.9.4",
-            "phpunit/phpunit": "^4.4"
-        },
-        "time": "2017-08-30T18:51:59+00:00",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "phpDocumentor\\Reflection\\": [
-                    "src/"
-                ]
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Mike van Riel",
-                "email": "me@mikevanriel.com"
-            }
-        ],
-        "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock."
     },
     {
         "name": "phpspec/prophecy",
@@ -5491,5 +5309,193 @@
             "laravel",
             "loop"
         ]
+    },
+    {
+        "name": "laravel/framework",
+        "version": "v5.5.22",
+        "version_normalized": "5.5.22.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/laravel/framework.git",
+            "reference": "2404af887ca8272d721628a99bbc721ac3b692e7"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/laravel/framework/zipball/2404af887ca8272d721628a99bbc721ac3b692e7",
+            "reference": "2404af887ca8272d721628a99bbc721ac3b692e7",
+            "shasum": ""
+        },
+        "require": {
+            "doctrine/inflector": "~1.1",
+            "erusev/parsedown": "~1.6",
+            "ext-mbstring": "*",
+            "ext-openssl": "*",
+            "league/flysystem": "~1.0",
+            "monolog/monolog": "~1.12",
+            "mtdowling/cron-expression": "~1.0",
+            "nesbot/carbon": "~1.20",
+            "php": ">=7.0",
+            "psr/container": "~1.0",
+            "psr/simple-cache": "^1.0",
+            "ramsey/uuid": "~3.0",
+            "swiftmailer/swiftmailer": "~6.0",
+            "symfony/console": "~3.3",
+            "symfony/debug": "~3.3",
+            "symfony/finder": "~3.3",
+            "symfony/http-foundation": "~3.3",
+            "symfony/http-kernel": "~3.3",
+            "symfony/process": "~3.3",
+            "symfony/routing": "~3.3",
+            "symfony/var-dumper": "~3.3",
+            "tijsverkoyen/css-to-inline-styles": "~2.2",
+            "vlucas/phpdotenv": "~2.2"
+        },
+        "replace": {
+            "illuminate/auth": "self.version",
+            "illuminate/broadcasting": "self.version",
+            "illuminate/bus": "self.version",
+            "illuminate/cache": "self.version",
+            "illuminate/config": "self.version",
+            "illuminate/console": "self.version",
+            "illuminate/container": "self.version",
+            "illuminate/contracts": "self.version",
+            "illuminate/cookie": "self.version",
+            "illuminate/database": "self.version",
+            "illuminate/encryption": "self.version",
+            "illuminate/events": "self.version",
+            "illuminate/filesystem": "self.version",
+            "illuminate/hashing": "self.version",
+            "illuminate/http": "self.version",
+            "illuminate/log": "self.version",
+            "illuminate/mail": "self.version",
+            "illuminate/notifications": "self.version",
+            "illuminate/pagination": "self.version",
+            "illuminate/pipeline": "self.version",
+            "illuminate/queue": "self.version",
+            "illuminate/redis": "self.version",
+            "illuminate/routing": "self.version",
+            "illuminate/session": "self.version",
+            "illuminate/support": "self.version",
+            "illuminate/translation": "self.version",
+            "illuminate/validation": "self.version",
+            "illuminate/view": "self.version",
+            "tightenco/collect": "self.version"
+        },
+        "require-dev": {
+            "aws/aws-sdk-php": "~3.0",
+            "doctrine/dbal": "~2.5",
+            "filp/whoops": "^2.1.4",
+            "mockery/mockery": "~1.0",
+            "orchestra/testbench-core": "3.5.*",
+            "pda/pheanstalk": "~3.0",
+            "phpunit/phpunit": "~6.0",
+            "predis/predis": "^1.1.1",
+            "symfony/css-selector": "~3.3",
+            "symfony/dom-crawler": "~3.3"
+        },
+        "suggest": {
+            "aws/aws-sdk-php": "Required to use the SQS queue driver and SES mail driver (~3.0).",
+            "doctrine/dbal": "Required to rename columns and drop SQLite columns (~2.5).",
+            "ext-pcntl": "Required to use all features of the queue worker.",
+            "ext-posix": "Required to use all features of the queue worker.",
+            "fzaninotto/faker": "Required to use the eloquent factory builder (~1.4).",
+            "guzzlehttp/guzzle": "Required to use the Mailgun and Mandrill mail drivers and the ping methods on schedules (~6.0).",
+            "laravel/tinker": "Required to use the tinker console command (~1.0).",
+            "league/flysystem-aws-s3-v3": "Required to use the Flysystem S3 driver (~1.0).",
+            "league/flysystem-rackspace": "Required to use the Flysystem Rackspace driver (~1.0).",
+            "nexmo/client": "Required to use the Nexmo transport (~1.0).",
+            "pda/pheanstalk": "Required to use the beanstalk queue driver (~3.0).",
+            "predis/predis": "Required to use the redis cache and queue drivers (~1.0).",
+            "pusher/pusher-php-server": "Required to use the Pusher broadcast driver (~3.0).",
+            "symfony/css-selector": "Required to use some of the crawler integration testing tools (~3.3).",
+            "symfony/dom-crawler": "Required to use most of the crawler integration testing tools (~3.3).",
+            "symfony/psr-http-message-bridge": "Required to psr7 bridging features (~1.0)."
+        },
+        "time": "2017-11-27T15:29:55+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "5.5-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "src/Illuminate/Foundation/helpers.php",
+                "src/Illuminate/Support/helpers.php"
+            ],
+            "psr-4": {
+                "Illuminate\\": "src/Illuminate/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Taylor Otwell",
+                "email": "taylor@laravel.com"
+            }
+        ],
+        "description": "The Laravel Framework.",
+        "homepage": "https://laravel.com",
+        "keywords": [
+            "framework",
+            "laravel"
+        ]
+    },
+    {
+        "name": "phpdocumentor/reflection-docblock",
+        "version": "4.2.0",
+        "version_normalized": "4.2.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
+            "reference": "66465776cfc249844bde6d117abff1d22e06c2da"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/66465776cfc249844bde6d117abff1d22e06c2da",
+            "reference": "66465776cfc249844bde6d117abff1d22e06c2da",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^7.0",
+            "phpdocumentor/reflection-common": "^1.0.0",
+            "phpdocumentor/type-resolver": "^0.4.0",
+            "webmozart/assert": "^1.0"
+        },
+        "require-dev": {
+            "doctrine/instantiator": "~1.0.5",
+            "mockery/mockery": "^1.0",
+            "phpunit/phpunit": "^6.4"
+        },
+        "time": "2017-11-27T17:38:31+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "4.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "phpDocumentor\\Reflection\\": [
+                    "src/"
+                ]
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Mike van Riel",
+                "email": "me@mikevanriel.com"
+            }
+        ],
+        "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock."
     }
 ]

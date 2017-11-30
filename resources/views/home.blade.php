@@ -22,7 +22,7 @@
                 <ul class="list-group">
                   <a href="{{ route('users.show', ['id' => Auth::user()->id]) }}" class="list-group-item list-group-item-action"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Mis Datos</a>
                   <a href="{{ route('ctausers.show', ['id' => Auth::id()]) }}" class="list-group-item list-group-item-action"><i class="fa fa-money" aria-hidden="true"></i> Mi Saldo</a>
-                  <a href="{{ url('/toplay') }}" class="list-group-item list-group-item-action list-group-item-success"><i class="fa fa-play" aria-hidden="true"></i> Jugar</a>
+                  <a href="{{ route('toplay.create') }}" class="list-group-item list-group-item-action list-group-item-success"><i class="fa fa-play" aria-hidden="true"></i> Jugar</a>
                   <a href="{{ url('results') }}" class="list-group-item list-group-item-action"><i class="fa fa-search" aria-hidden="true"></i> Resultados</a>
                   <a href="{{ route('results.statistics') }}" class="list-group-item list-group-item-action"><i class="fa fa-bar-chart" aria-hidden="true"></i> Estadisticas</a>
                 </ul>
@@ -51,7 +51,7 @@
 
     </div>
     {{-- Informacion de Administracion --}}
-    <div class="col-6">
+    <div class="col-lg-6">
       <div class="card">
         <h3 class="card-header bg-primary text-white">Informacion General</h3>
         <div class="card-body">
