@@ -355,7 +355,7 @@ $(function(){
         this.plays.splice(index,1);
       },
       getFormValues () {
-        this.output = JSON_stringify(this.$refs.ticketData.value)
+        this.output = this.$refs.ticketData.value
       },
       submitform() {
 
