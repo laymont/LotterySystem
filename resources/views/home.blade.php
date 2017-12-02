@@ -11,7 +11,7 @@
     <div class="col-lg-6">
       {{-- B4 --}}
       <div class="card">
-        <h3 class="card-header bg-info text-white"> Mi Cuenta <small class="text-warning">{{ \Carbon\Carbon::now() }}</small></h3>
+        <h3 class="card-header bg-info text-white"> Mi Cuenta | <small id="time"></small></h3>
         <div class="card-body">
           <h4 class="card-title"><i class="fa fa-info-circle" aria-hidden="true"></i> Información General de mi Cuenta  </h4>
           <div class="row card-body">
@@ -56,7 +56,7 @@
         <div class="card-body">
           {{-- Retiros pendientes --}}
           @if ($retreats)
-            <h4 class="card-title text-danger"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Retiros pendientes por <a href="{{ route('regains.index') }}" title="Retiro" class="btn btn-danger btn-sm"> Aprobar</a></h4>
+          <h4 class="card-title text-danger"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Retiros pendientes por <a href="{{ route('regains.index') }}" title="Retiro" class="btn btn-danger btn-sm"> Aprobar</a></h4>
           @endif
           {{-- Retiros pendientes --}}
           {{-- Sorteos pendientes por resultado --}}
@@ -232,6 +232,16 @@
 @endsection
 
 @section('scripts')
+<script type="text/javascript">
+  moment.locale('es-ve');
+  function showTheTime() {
+    var s = moment().format('MMMM DD YYYY, h:mm:ss a');
+    document.getElementById("time").innerHTML = s;
+  }
+  showTheTime(); // for the first load
+  setInterval(showTheTime, 1 * 1000); // update it periodically
+</script>
+</script>
 <script type="text/javascript">
 
   $(document).ready(function(){

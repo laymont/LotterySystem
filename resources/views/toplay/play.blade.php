@@ -7,9 +7,8 @@
     {{-- Form --}}
     <div class="col-lg-3">
       <h3>Jugada</h3>
-      <div id="app">
-        <p>Hora:<span v-text="currentTime"></span></p>
-      </div>
+      {{-- Reloj LIVE --}}
+      <div id="time"></div>
       {{-- Form --}}
       <div>
         {!! Form::open(['method' => 'POST', 'route'=> 'toplay.store', 'class' => 'form-horizontal','id' => 'ticketShow']) !!}
@@ -230,10 +229,14 @@
 @endsection
 
 @section('scripts')
-{{-- For Vue  --}}
-<script src="{{ asset('js/moment.js') }}"></script>
-<script src="{{ asset('js/axios.min.js') }}"></script>
-<script src="{{ asset('js/vue.js') }}"></script>
+<script type="text/javascript">
+  function showTheTime() {
+    var s = moment().format('MMMM DD YYYY, h:mm:ss a');
+    document.getElementById("time").innerHTML = s;
+  }
+  showTheTime(); // for the first load
+  setInterval(showTheTime, 250); // update it periodically
+</script>
 
 <script type="text/javascript">
   $(function(){
@@ -376,28 +379,6 @@
       $('#number').val('');
       $('#amount').val('');
     })//End addNumber
-
-
-  })
-</script>
-
-<script type="text/javascript">
-  /* Vue */
-
-  new Vue({
-    el: '#app',
-    data: {
-      currentTime: null,
-    },
-    methods: {
-      updateCurrenTime(){
-        this.currentTime = moment().format('LTS');
-      },
-    },
-    created(){
-      this.currenTime= moment().format('LTS');
-      setInterval( () => this.updateCurrenTime(),1 * 1000 );
-    }
   })
 </script>
 

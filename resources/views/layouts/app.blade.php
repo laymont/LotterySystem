@@ -38,6 +38,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('css/sweetalert2.css') }}">
 
 <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+<script src="{{ asset('js/moment-with-locales.js') }}"></script>
 <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
 <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
 
