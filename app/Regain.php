@@ -40,4 +40,15 @@ class Regain extends Model
     return $this->belongsTo(User::class,'user_id');
   }
 
+  /**
+   * Regain belongs to Usersinfo.
+   *
+   * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+   */
+  public function usersinfo()
+  {
+    // belongsTo(RelatedModel, foreignKey = usersinfo_id, keyOnRelatedModel = id)
+    return $this->belongsTo(User_info::class,'user_id','user_id');
+  }
+
 }

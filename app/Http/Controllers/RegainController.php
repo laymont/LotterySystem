@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Regain;
 use App\User;
+use App\User_info;
+use App\Ctauser;
 use DB;
 use Illuminate\Http\Request;
 
@@ -16,10 +18,7 @@ class RegainController extends Controller
      */
     public function index()
     {
-      $regains = DB::table('regains')
-      ->join('users','regains.user_id','=','users.id')
-      ->where('regains.send',0)
-      ->get();
+      $regains = Regain::where('send',0)->with('users','usersinfo')->get();
       return view('regains.index', compact('regains'));
     }
 
@@ -75,7 +74,30 @@ class RegainController extends Controller
      */
     public function update(Request $request, Regain $regain)
     {
-        //
+      $discount = Ctauser::where('user_id',$request->user_id)
+      ->where('spent',0)
+      ->get();
+      if($discount->count() === 1){
+        $balance = $discount[0]->payment - $request->amount;
+        if($balance > 0){
+          $discount[0]->payment = $balance;
+          $discount[0]->save();
+
+          $sendpay = Regain::findOrFail($request->id);
+          $sendpay->send = 1;
+          $sendpay->save();
+
+          alert()->success('Confirmado','Se registro el Reintegro al Usuario')->autoclose(30000);
+          return redirect('regains');
+
+        }else {
+          alert()->error('Imposible hacer este reintegro','El usuario no posee Saldo en cuenta para hacer este retiro')->autoclose(30000);
+          return redirect('regains');
+        }
+      }else {
+        alert()->error('Imposible hacer este reintegro','El usuario posee mas de un registro de Abono activo. Se debe normalizar la data.')->autoclose(30000);
+        return redirect('regains');
+      }
     }
 
     /**
@@ -88,4 +110,4 @@ class RegainController extends Controller
     {
         //
     }
-}
+  }

@@ -203,7 +203,7 @@
       <div class="form-group">
         <p>{{ $numberTicket }}</p>
       </div>
-      <table class="table table-bordered table-condensed" id="tableVue">
+      <table class="table table-bordered table-condensed" id="tableticket">
         <caption>Ticket</caption>
         <thead>
           <tr>
@@ -242,8 +242,9 @@
   $(function(){
     console.log('Run jQuery');
 
-    var numbers = new Array();
-    var amounts = new Array();
+    var day = moment().format('YYYY-MM-DD');
+    var numbers = [];
+    var amounts = [];
     var total = parseFloat(0);
     var animals = [
     ['-1','00-Ballena'],
@@ -362,23 +363,19 @@
           resultAnimal = animals[i][1];
         }
       }
-      console.log('ResultAnimal:' + resultAnimal);
-
 
       $('#plays').append('<tr><td id="btnrmv" class="text-center">'+ $("#raffle_id option:selected").text() +'</td><td class="text-center">'+ resultAnimal +'</td><td class="text-right">'+ parseFloat($('#amount').val()) +'</td></tr>');
 
       total = parseFloat($('#amount').val()) + parseFloat(total);
 
-
-
-      console.log(total);
-      console.log('Numbers: ' + $('#numbers').val(numbers) + ' Amounts: ' + $('#amounts').val(amounts));
-
       $('#totalplay').html(parseFloat(total));
 
       $('#number').val('');
       $('#amount').val('');
+
+
     })//End addNumber
+
   })
 </script>
 

@@ -55,7 +55,7 @@
         <h3 class="card-header bg-primary text-white">Informacion General</h3>
         <div class="card-body">
           {{-- Retiros pendientes --}}
-          @if ($retreats)
+          @if ($retreats->isNotEmpty())
           <h4 class="card-title text-danger"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Retiros pendientes por <a href="{{ route('regains.index') }}" title="Retiro" class="btn btn-danger btn-sm"> Aprobar</a></h4>
           @endif
           {{-- Retiros pendientes --}}
