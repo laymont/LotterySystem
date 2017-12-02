@@ -13,6 +13,7 @@ use App\Ctauser;
 use App\Lotterie;
 use App\Raffle;
 use App\Play;
+use App\Regain;
 use Alert;
 
 class HomeController extends Controller
@@ -58,6 +59,11 @@ class HomeController extends Controller
             ->orderBy('raffles.hour','DESC')
             ->orderBy('plays.id', 'ASC')
             ->get();
+
+            /* Informacion de retiros pendientes */
+            $retreats = Regain::where('send',0)
+            ->get();
+
           }else {
             /* Información de los Tickets */
             $tickets = DB::table('plays')
@@ -72,12 +78,17 @@ class HomeController extends Controller
             ->orderBy('raffles.hour','DESC')
             ->orderBy('plays.id', 'ASC')
             ->get();
+
+            /* Informacion de retiros pendientes */
+            $retreats = Regain::where('send',0)
+            ->where('user_id', Auth::id())
+            ->get();
           }
 
           /* Resultados Pendientes */
           $withoutReport = DB::table('raffles')
           ->whereRaw('raffles.`day`= DATE_FORMAT(CURRENT_DATE(),"%a") AND raffles.hour < current_time() AND raffles.id NOT IN(SELECT results.raffle_id FROM results WHERE DATE_FORMAT(results.date,"%d") = DATE_FORMAT(CURRENT_DATE(),"%d")
-          )')
+        )')
           ->get();
 
           /* Collect Animals para resultados */
@@ -89,10 +100,10 @@ class HomeController extends Controller
           if ( $info == 0){
             alert()->flash('Informacion de Usuario Incompleta!', 'warning')->autoclose(30000);
             $request->user()->authorizeRoles(['user', 'admin']);
-            return view('home', compact('amountpending', 'tickets','withoutReport','animals'));
+            return view('home', compact('amountpending', 'tickets','withoutReport','animals','retreats'));
           }else {
             $request->user()->authorizeRoles(['user', 'admin']);
-            return view('home', compact('amountpending', 'tickets','withoutReport','animals'));
+            return view('home', compact('amountpending', 'tickets','withoutReport','animals','retreats'));
           }
 
         }

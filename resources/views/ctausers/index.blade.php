@@ -13,10 +13,7 @@
             <th>Fecha/Abono</th>
             <th>Monto/Abono</th>
             <th>Banco/Origen</th>
-            <th>Tipo</th>
-            <th>Referencia</th>
             <th>Confirmado</th>
-            <th>Agotado</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -25,25 +22,26 @@
           <tr>
             <td>{{ $item->user->name }}</td>
             <td class="text-center">{{ $item->payment_day }}</td>
-            <td class="text-right">Bs. {{ number_format($item->payment,2,",",".") }}</td>
-            <td>{{ $item->bank->name }}</td>
-            <td class="text-center">{{ $item->type }}</td>
-            <td class="text-center">{{ $item->reference }}</td>
+            <td class="text-right">
+              @if ($item->spent == 0)
+              Bs. {{ number_format($item->payment,2,",",".") }}
+              <sup>
+                <span class="text-primary" title="Con Saldo"><i class="fa fa-battery-full" aria-hidden="true"></i></span>
+              </sup>
+              @else
+              <del>Bs. {{ number_format($item->payment,2,",",".") }}</del>
+              <sup>
+                <span class="text-danger" title="Sin Saldo"><i class="fa fa-battery-empty" aria-hidden="true"></i></span>
+              </sup>
+              @endif
+            </td>
+            <td>{{ $item->bank->name }} ({{ $item->type }}) <br>Ref: {{ $item->reference }}</td>
             <td class="text-center">
               @if ($item->confirmed == 1)
               <span class="text-success"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>
               @else
               <span class="text-warning"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>
               @endif
-
-            </td>
-            <td class="text-center">
-              @if ($item->spent == 0)
-              <span class="text-primary"><i class="fa fa-battery-full" aria-hidden="true"></i></span>
-              @else
-              <span class="text-danger"><i class="fa fa-battery-empty" aria-hidden="true"></i></span>
-              @endif
-
             </td>
             <td>
               <a class="btn btn-sm btn-success" href="#" title="Confirmar"> Confirmar</a>
@@ -51,6 +49,7 @@
               <a class="btn btn-sm btn-warning" href="#" title="Limitar"> Limitar</a>
               &nbsp;
               <a class="btn btn-sm btn-warning" href="#" title="Suspender"> Suspender</a>
+              &nbsp;
             </td>
           </tr>
           @endforeach

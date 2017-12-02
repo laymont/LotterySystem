@@ -34,9 +34,13 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.dataTables.min.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/dataTables.bootstrap4.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.bootstrap4.min.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('css/sweetalert2.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/animate.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/sweetalert2.css') }}">
+
 <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
-<script src="{{ asset('js/sweetalert2.js') }}"></script>
+<script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
+<script src="{{ asset('js/sweetalert2.min.js') }}"></script>
+
 @yield('csss')
 
 </head>
@@ -107,9 +111,7 @@
 <script src="{{ asset('js/popper.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/chart.min.js') }}"></script>
-<script src="{{ asset('js/moment.js') }}"></script>
-<script src="{{ asset('js/axios.min.js') }}"></script>
-<script src="{{ asset('js/vue.js') }}"></script>
+
 
 <script>
   // $('#flash-overlay-modal').modal();

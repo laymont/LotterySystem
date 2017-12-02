@@ -16,7 +16,7 @@ class CreateCtausersTable extends Migration
         Schema::create('ctausers', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
-            $table->date('payment_day');
+            $table->date('payment_day')->unsigned();
             $table->decimal('payment',10,2);
             $table->integer('bank_id');
             $table->enum('type', ['Deposito','Transferencia']);

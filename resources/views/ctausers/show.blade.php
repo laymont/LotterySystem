@@ -18,7 +18,7 @@
         <div class="collapse" id="regain">
           <hr>
             <div class="col-8">
-              {!! Form::open(['route' => ['ctausers.regain', Auth::id()], 'method' => 'PATCH'] ) !!}
+              {!! Form::open(['route' => ['ctausers.retreats', Auth::id()], 'method' => 'PATCH'] ) !!}
               {!! Form::hidden('user_id', Auth::id()) !!}
             <div class="form-group">
               {!! Form::number('amount', null, ['class'=>'form-control text-right', 'placeholder'=> 'Monto minimo 10.000,00']) !!}

@@ -32,7 +32,7 @@
             </tbody>
             <tfoot>
               <tr>
-                <td class="text-right lead"><strong>Total</strong></td>
+                <td colspan="2" class="text-right lead"><strong>Total</strong></td>
                 <td class="text-right lead"><strong>{{ number_format($viewticket->sum('amount'),2,",",".") }}</strong></td>
               </tr>
             </tfoot>

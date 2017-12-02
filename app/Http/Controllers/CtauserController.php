@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Ctauser;
 use App\Bank;
 use App\Play;
+use App\Regain;
 use Illuminate\Http\Request;
 use DB;
 use Auth;
@@ -19,7 +20,8 @@ class CtauserController extends Controller
     public function index()
     {
       $ctausers = Ctauser::all();
-      return view('ctausers.index',compact('ctausers'));
+      $retreats = Regain::all();
+      return view('ctausers.index',compact('ctausers','retreats'));
     }
 
     /**
@@ -62,18 +64,32 @@ class CtauserController extends Controller
      * @param $id de usuario y $id de cuenta del usuario
      * @return se debe restar el retiro al monto total disponible en la cuenta del usuario
      */
-    public function retiro(Request $request, $id)
+    public function retreats(Request $request, $id)
     {
-      $retiro = Ctauser::where('user_id', $id)
+      $retirement = Ctauser::where('user_id', $id)
       ->where('spent',0)
       ->where('payment','>=', $request->amount)
-      ->first();
-      if ($retiro == null) {
+      ->get();
 
-        alert()->error('Error', 'No puede realizar este retiro.')->autoclose(30000);
-
+      if($retirement->isEmpty()){
+        alert()->error('Imposible Retirar', 'No dispone de Saldo para efectuar el retiro indicado');
+        return redirect('home');
+      }else {
+        /* Registrar el retiro */
+        $retirementReg = new Regain;
+        $retirementReg->date = \Carbon\Carbon::now()->format('Y-m-d');
+        $retirementReg->user_id = Auth::id();
+        $retirementReg->amount = $request->amount;
+        $retirementReg->save();
+        alert()->warning('Notificación de Retiro','La notificación de retiro ha sido efectuada. Se espera por la aprobación de Administración')->autoclose(30000);
         return redirect('home');
       }
+
+    }
+
+    public function retirement($id)
+    {
+      dd($id);
     }
 
     public function addacount(Request $request, $id)
@@ -137,6 +153,7 @@ class CtauserController extends Controller
     /* Saldo */
     $balance = DB::table('ctausers')
     ->where('user_id','=', Auth::id())
+    ->where('spent',0)
     ->where('confirmed',1)
     ->selectRaw('SUM(payment) AS `amount`')
     ->groupBy('user_id')

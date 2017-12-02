@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Regain;
+use App\User;
+use DB;
 use Illuminate\Http\Request;
 
 class RegainController extends Controller
@@ -14,7 +16,11 @@ class RegainController extends Controller
      */
     public function index()
     {
-        //
+      $regains = DB::table('regains')
+      ->join('users','regains.user_id','=','users.id')
+      ->where('regains.send',0)
+      ->get();
+      return view('regains.index', compact('regains'));
     }
 
     /**

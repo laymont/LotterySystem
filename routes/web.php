@@ -84,7 +84,8 @@ Route::resource('raffles', 'RaffleController');
 /* Cta Users */
 Route::resource('ctausers', 'CtauserController');
 Route::post('ctausers', 'CtauserController@store')->name('ctausers.store');
-Route::patch('ctausers/{id}/regain', 'CtauserController@retiro')->name('ctausers.regain');
+Route::patch('ctausers/{id}/retreats', 'CtauserController@retreats')->name('ctausers.retreats');
+Route::patch('ctausers/{id}/retirement','CtauserController@retirement')->name('ctausers.retirement');
 Route::get('ctausers/{user_id}/pay','CtauserController@addacount')->name('ctausers.addacount');
 
 Route::resource('regains', 'RegainController');

@@ -84,6 +84,7 @@ class UserinfoController extends Controller
         /* Saldo */
         $balance = DB::table('ctausers')
         ->where('user_id','=', Auth::id())
+        ->where('spent',0)
         ->where('confirmed',1)
         ->selectRaw('SUM(payment) AS `amount`')
         ->groupBy('user_id')

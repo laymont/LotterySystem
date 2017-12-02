@@ -28,4 +28,16 @@ class Regain extends Model
    * @var array
    */
   protected $fillable = ['date','user_id','amount'];
+
+  /**
+   * Regain belongs to Users.
+   *
+   * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+   */
+  public function users()
+  {
+    // belongsTo(RelatedModel, foreignKey = users_id, keyOnRelatedModel = id)
+    return $this->belongsTo(User::class,'user_id');
+  }
+
 }

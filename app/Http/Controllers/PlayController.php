@@ -68,19 +68,23 @@ class PlayController extends Controller
      */
     public function create()
     {
-      $lottery_list = Lotterie::select('name','id')->get();
+      $lottery_list = Lotterie::pluck('name','id');
       $day = \Carbon\Carbon::now('America/Caracas')->format('D'); // Dia de la Semana
       $hourActual = \Carbon\Carbon::now('America/Caracas')->format('H:m:s');
+      $numberTicket = time() . '-' . mt_rand(0,38);
 
       $raffles = Raffle::where('lottery_id', 1)
       ->where('day','=', $day)
-      // ->where('hour','>=', $hourActual)
-      ->select('id','hour')
-      ->get();
+      ->where('hour','>=', $hourActual)
+      ->pluck('hour','id');
+      if($raffles->isEmpty()){
+        alert()->error('Sin Sorteo', 'No hay sorteos disponibles para jugar')->autoclose(30000);
+        return redirect('home');
+      }
 
       // $raffles = $raffles->toJson();
 
-      return view('toplay.play', compact('lottery_list','raffles'));
+      return view('toplay.play', compact('lottery_list','raffles','numberTicket'));
     }
 
     /**
@@ -91,68 +95,88 @@ class PlayController extends Controller
      */
     public function store(Request $request)
     {
-      dd( $request->ticket );
+      /* Make Array */
+      $ticket = collect(); // Nueva colecion para ticket
+      $number = explode(",",$request->numbers); // Numeros Jugados
+      $amount = explode(",",$request->amounts); // Montos Apostados
 
-      // validate
-      $validator = $request->validate([
-        'ticket' => 'required'
-      ]);
 
-      $numberTicket = time() . '-' . mt_rand(0,38);
-
-      // dd( $request->input() );
-
-      $json = json_decode($request->input('ticket'));
-      /* comprobar si tiene saldo suficiente para jugar */
-      // dd($json);
-      $total = array();
-      foreach ($json as $value) {
-        $total[] = $value->amount;
+      /* Creo la coleccion con $Request */
+      for ($i = 0; $i <=count($number)-1 ; $i++) {
+        $ticket->push(['date'=>\Carbon\Carbon::now()->format('Y-m-d h:m:s'),'ticket'=>$request->ticket,'user_id'=>$request->user_id,'lottery_id'=>$request->lottery_id,'raffle_id'=>$request->raffleid,'number'=>$number[$i],'amount'=>$amount[$i],'code'=>$request->lottery_id.'-'.$request->raffleid.'-'.$number[$i].'-'.$request->ticket]);
       }
-      $total = array_sum($total);
-      $ctauser = Ctauser::where('spent',0)
+
+      /* Monto total de la Apuesta */
+      $betAmount = $ticket->sum('amount');
+
+      /* Dato de las cuenta y abonos del usuario */
+      $ctausers = Ctauser::where('spent',0)
       ->where('user_id', Auth::id())
-      ->select('payment')
-      ->first();
+      ->get();
 
-      // dd($ctauser->payment);
+      /* Sumar los registros */
+      $totalAmount = $ctausers->sum('payment'); // <-Saldo Total
+      /* Cantidad de Registros */
+      $totalRegisterAmount = $ctausers->count(); // <-Cantidad de Registros
 
-      if ($total > $ctauser->payment) {
-        /* No tiene saldo para realizar la apuesta */
-        alert()->error('Error', 'No tiene saldo suficiente para realizar esta apuesta')->autoclose(30000);
+      /* Saldo restante */
+      $finalAmount = $totalAmount - $betAmount; // <-(Saldo - Apuesta)
+
+      if ($totalRegisterAmount == 1) {
+        /* Si solo posee un registro en CTAUSERS */
+        $ctausers[0]->payment = $finalAmount; // <-actualizando el ult registro a saldo definitivo
+        $ctausers[0]->save();
+        /* registrar ticket */
+        for ($i = 0; $i <=count($ticket)-1 ; $i++) {
+          $regTicket = new Play;
+          $regTicket->date = $ticket[$i]['date'];
+          $regTicket->ticket = $ticket[$i]['ticket'];
+          $regTicket->user_id = $ticket[$i]['user_id'];
+          $regTicket->lottery_id = $ticket[$i]['lottery_id'];
+          $regTicket->raffle_id = $ticket[$i]['raffle_id'];
+          $regTicket->number = $ticket[$i]['number'];
+          $regTicket->amount = $ticket[$i]['amount'];
+          $regTicket->code = $ticket[$i]['code'];
+          $regTicket->save();
+        }
+        /* Fin del Proceso */
+        alert()->success('Registro Correcto', 'Ticket Registrado')->autoclose(30000);
+        return redirect('home');
+
+      }else if ($totalRegisterAmount > 1) {
+        /* Posee mas de un registro*/
+        $lastRegCtausers = $ctausers->last();
+        $lastRegCtausers->payment = $finalAmount; // <-actualizando el ult registro a saldo definitivo
+        $lastRegCtausers->save();
+        $ctausers->pop();
+        $ctausers->all();
+        /* Agotar los registros restantes */
+        for ($i = 0; $i <=count($ctausers)-1 ; $i++) {
+          $ctausers[$i]->spent = 1;
+          $ctausers[$i]->save();
+        }
+
+        /* registrar ticket */
+        for ($i = 0; $i <=count($ticket)-1 ; $i++) {
+          $regTicket = new Play;
+          $regTicket->date = $ticket[$i]['date'];
+          $regTicket->ticket = $ticket[$i]['ticket'];
+          $regTicket->user_id = $ticket[$i]['user_id'];
+          $regTicket->lottery_id = $ticket[$i]['lottery_id'];
+          $regTicket->raffle_id = $ticket[$i]['raffle_id'];
+          $regTicket->number = $ticket[$i]['number'];
+          $regTicket->amount = $ticket[$i]['amount'];
+          $regTicket->code = $ticket[$i]['code'];
+          $regTicket->save();
+        }
+        /* Fin del Proceso */
+        alert()->success('Registro Correcto', 'Ticket Registrado')->autoclose(30000);
         return redirect('home');
       }else {
-        /* Puede realizar la apuesta; se descuenta el monto */
-        $acount = Ctauser::where('spent', 0)
-        ->where('user_id', Auth::id())
-        ->select('id', 'payment')
-        ->first();
-
-        $rest = $acount->payment - $total;
-        $discount = Ctauser::where('user_id', Auth::id())
-        ->where('spent', 0)
-        ->first();
-        $discount->payment = $rest;
-        $discount->save();
+        /* Error */
+        alert()->error('ERROR', 'Imposible registrar su jugada. Comuniquese con la Administración')->autoclose(30000);
+        return redirect('home');
       }
-
-      foreach ($json as $value) {
-        $play = new Play();
-        $play->date = $value->date;
-        $play->ticket = $numberTicket;
-        $play->user_id = $value->user;
-        $play->lottery_id = $value->lottery;
-        $play->raffle_id = $value->raffle;
-        $play->number = $value->number;
-        $play->amount = $value->amount;
-        $play->code = $value->lottery . '-' . $value->raffle . '-' . $value->number . '-' . $numberTicket;
-        /* Descontar el monto jugado */
-
-        $play->save();
-      }
-
-      alert()->success('Registro Correcto', 'Ticket Registrado')->autoclose(30000);
-      return redirect('home');
     }
 
     /**

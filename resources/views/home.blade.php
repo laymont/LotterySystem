@@ -48,13 +48,17 @@
         </div>
       </div>
       {{-- B4 --}}
-
     </div>
     {{-- Informacion de Administracion --}}
     <div class="col-lg-6">
       <div class="card">
         <h3 class="card-header bg-primary text-white">Informacion General</h3>
         <div class="card-body">
+          {{-- Retiros pendientes --}}
+          @if ($retreats)
+            <h4 class="card-title text-danger"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Retiros pendientes por <a href="{{ route('regains.index') }}" title="Retiro" class="btn btn-danger btn-sm"> Aprobar</a></h4>
+          @endif
+          {{-- Retiros pendientes --}}
           {{-- Sorteos pendientes por resultado --}}
           @if (!$withoutReport->isEmpty())
           <h4 class="card-title text-warning"><i class="fa fa-info-circle" aria-hidden="true"></i> Resultados pendientes por Notificar </h4>

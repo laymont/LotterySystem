@@ -18,6 +18,7 @@ class CreateRegainsTable extends Migration
             $table->date('date');
             $table->integer('user_id')->index();
             $table->decimal('amount', 10, 2)->unsigned();
+            $table->smallInteger('send')->unsigned()->index();
             $table->timestamps();
             $table->softDeletes();
         });
