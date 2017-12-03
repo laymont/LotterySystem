@@ -52,7 +52,7 @@
               @php
               {{ $spent = $item->payment - ($item->payment * 2); }}
               @endphp
-              <span class="text-danger">{{ number_format($spent,2,",",".")  }}</span>
+              <span class="text-danger"><del>{{ number_format($spent,2,",",".")  }}</del></span>
               @else
               @if ($item->confirmed == 0)
               <span class="text-warning"><sup><abbr title="Sin Confirmar">*</abbr></sup>&nbsp;{{ number_format($item->payment,2,",",".")  }}</span>

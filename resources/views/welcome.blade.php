@@ -115,7 +115,7 @@
       <div class="container">
         <h1 class="display-3">Mundo Animalitos!</h1>
         <p class="lead">Ponemos a su disposicion nuestro sistema de juego en linea, para que se divierta apostando con el juego del momento. Que nos diferencias de las otras paginas de juegos, <span style="color: #FD367E;">nuestro monto limite de apuesta...</span></p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Conoce mas de Nosotros &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg" href="{{ url('/politica') }}" target="_blank" role="button">Conozca nuestra política &raquo;</a></p>
       </div>
     </div>
 

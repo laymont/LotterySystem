@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\Mail;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,6 +14,22 @@
 // Route::get('/', function() {
 //   return view('welcome');
 // });
+
+Route::get('email', function(){
+  return new \App\Mail\WelcomeUser(auth()->user()->name);
+  // Mail::to('laymont@gmail.com')->send(new \App\Mail\WelcomeUser(auth()->user()->name));
+  // return view('home');
+});
+
+Route::get('ticket', function(){
+  return new \App\Mail\TicketUser();
+  // Mail::to('laymont@gmail.com')->send(new \App\Mail\WelcomeUser(auth()->user()->name));
+  // return view('home');
+});
+
+Route::get('politica', function(){
+  return view('/politica');
+});
 
 Route::get('/', function () {
   $animals = collect(\Config::get('constants.animals'));

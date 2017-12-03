@@ -15,18 +15,22 @@
   {{-- Sweet Alert --}}
   <link rel="stylesheet" type="text/css" href="{{ asset('js/src/sweetalert.css') }}">
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Oswald:400,600" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Spectral+SC" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet">
   <style type="text/css" media="screen">
-  body {
-    font-family: 'Oswald', sans-serif;
-    color: #4A2C2C;
+  html, body {
+    font-family: 'EB Garamond', serif;
   }
+  h1,h2,h3,h4,h5,h6 {
+    font-family: 'Spectral SC', serif;
+    color: #3E4377;
+  }
+  .card-header { color: #616161; background-color: #E3F3F7; }
   .bg-dark-custom { background-color: #000; }
   .margin-nav { margin-top: 30px; }
   .text-white { color: white; }
   table tr td { font-family: 'Open Sans', sans-serif; color: #4A2C2C; font-size: 0.8em !important; }
-  table thead th { color: #F1F2F3; background-color: #56A7A7; }
+  table thead th { color: #616161; background-color: #E3F3F7; }
   .list-group a:hover { color: #3E4377; }
 
 </style>

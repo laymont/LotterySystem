@@ -1,5 +1,20 @@
 @extends('layouts.app')
 
+@section('csss')
+<style type="text/css" media="screen">
+.item {
+  border: 1px solid red;
+  overflow: hidden;
+}
+.item img {
+  transition: all 0.3s;
+}
+.item:hover img {
+  transform: scale(1.5);
+}
+</style>
+@endsection
+
 @section('content')
 
 <div class="container-fluid">
@@ -64,122 +79,122 @@
         <caption>Tablero de Juego </caption>
         <tbody>
           <tr>
-            <td data-value="6" data-name="Rana">
+            <td data-value="6" data-name="Rana" class="item">
               <img class="img-fluid" data-src="holder.js/100x50?ImgAnimal" src="{{ asset('img/animalitos/06-Rana.png') }}" title="Rana" alt="">
             </td>
-            <td data-value="12" data-name="Caballo">
+            <td data-value="12" data-name="Caballo" class="item">
               <img class="img-fluid" data-src="holder.js/100x50?ImgAnimal" src="{{ asset('img/animalitos/12-Caballo.png') }}" title="Caballo" alt="">
             </td>
-            <td data-value="18" data-name="Burro">
+            <td data-value="18" data-name="Burro" class="item">
               <img class="img-fluid" data-src="holder.js/100x50?ImgAnimal" src="{{ asset('img/animalitos/18-Burro.png') }}" title="Burro" alt="">
             </td>
-            <td data-value="24" data-name="Iguana">
+            <td data-value="24" data-name="Iguana" class="item">
               <img class="img-fluid" data-src="holder.js/100x50?ImgAnimal" src="{{ asset('img/animalitos/24-Iguana.png') }}" title="Iguana" alt="">
             </td>
-            <td data-value="30" data-name="Caiman">
+            <td data-value="30" data-name="Caiman" class="item">
               <img class="img-fluid" data-src="holder.js/100x50?ImgAnimal" src="{{ asset('img/animalitos/30-Caiman.png') }}" title="Caiman" alt="">
             </td>
-            <td data-value="36" data-name="Culebra">
+            <td data-value="36" data-name="Culebra" class="item">
               <img class="img-fluid" data-src="holder.js/100x50?ImgAnimal" src="{{ asset('img/animalitos/36-Culebra.png') }}" title="Culebra" alt="">
             </td>
           </tr>
           <tr>
-            <td data-value="5" data-name="Leon">
+            <td data-value="5" data-name="Leon" class="item">
               <img class="img-fluid" data-src="holder.js/100x50?ImgAnimal" src="{{ asset('img/animalitos/05-Leon.png') }}" title="Leon" alt="">
             </td>
-            <td data-value="11" data-name="Gato">
+            <td data-value="11" data-name="Gato" class="item">
               <img class="img-fluid" data-src="holder.js/100x50?ImgAnimal" src="{{ asset('img/animalitos/11-Gato.png') }}" title="Gato" alt="">
             </td>
-            <td data-value="17" data-name="Pavo">
+            <td data-value="17" data-name="Pavo" class="item">
               <img class="img-fluid" data-src="holder.js/100x50?ImgAnimal" src="{{ asset('img/animalitos/17-Pavo.png') }}" title="Pavo" alt="">
             </td>
-            <td data-value="23" data-name="Cebra">
+            <td data-value="23" data-name="Cebra" class="item">
               <img class="img-fluid" data-src="holder.js/100x50?ImgAnimal" src="{{ asset('img/animalitos/23-Cebra.png') }}" title="Cebra" alt="">
             </td>
-            <td data-value="29" data-name="Elefante">
+            <td data-value="29" data-name="Elefante" class="item">
               <img class="img-fluid" data-src="holder.js/100x50?ImgAnimal" src="{{ asset('img/animalitos/29-Elefante.png') }}" title="Elefante" alt="">
             </td>
-            <td data-value="35" data-name="Jirafa">
+            <td data-value="35" data-name="Jirafa" class="item">
               <img class="img-fluid" data-src="holder.js/100x50?ImgAnimal" src="{{ asset('img/animalitos/35-Jirafa.png') }}" title="Jirafa" alt="">
             </td>
           </tr>
           <tr>
-            <td data-value="4" data-name="Alacran">
+            <td data-value="4" data-name="Alacran" class="item">
               <img class="img-fluid" data-src="holder.js/100x50?ImgAnimal" src="{{ asset('img/animalitos/04-Alacran.png') }}" title="Alacran" alt="">
             </td>
-            <td data-value="10" data-name="Tigre">
+            <td data-value="10" data-name="Tigre" class="item">
               <img class="img-fluid" data-src="holder.js/100x50?ImgAnimal" src="{{ asset('img/animalitos/10-Tigre.png') }}" title="Tigre" alt="">
             </td>
-            <td data-value="16" data-name="Oso">
+            <td data-value="16" data-name="Oso" class="item">
               <img class="img-fluid" data-src="holder.js/100x50?ImgAnimal" src="{{ asset('img/animalitos/16-Oso.png') }}" title="Oso" alt="">
             </td>
-            <td data-value="22" data-name="Camello">
+            <td data-value="22" data-name="Camello" class="item">
               <img class="img-fluid" data-src="holder.js/100x50?ImgAnimal" src="{{ asset('img/animalitos/22-Camello.png') }}" title="Camello" alt="">
             </td>
-            <td data-value="28" data-name="Zamuro">
+            <td data-value="28" data-name="Zamuro" class="item">
               <img class="img-fluid" data-src="holder.js/100x50?ImgAnimal" src="{{ asset('img/animalitos/28-Zamuro.png') }}" title="Zamuro" alt="">
             </td>
-            <td data-value="34" data-name="Venado">
+            <td data-value="34" data-name="Venado" class="item">
               <img class="img-fluid" data-src="holder.js/100x50?ImgAnimal" src="{{ asset('img/animalitos/34-Venado.png') }}" title="Venado" alt="">
             </td>
           </tr>
           <tr>
-            <td data-value="3" data-name="Ciempies">
+            <td data-value="3" data-name="Ciempies" class="item">
               <img class="img-fluid" data-src="holder.js/100x50?ImgAnimal" src="{{ asset('img/animalitos/03-Ciempies.png') }}" alt="">
             </td>
-            <td data-value="9" data-name="Aguila">
+            <td data-value="9" data-name="Aguila" class="item">
               <img class="img-fluid" data-src="holder.js/100x50?ImgAnimal" src="{{ asset('img/animalitos/09-Aguila.png') }}" alt="">
             </td>
-            <td data-value="15" data-name="Zorro">
+            <td data-value="15" data-name="Zorro" class="item">
               <img class="img-fluid" data-src="holder.js/100x50?ImgAnimal" src="{{ asset('img/animalitos/15-Zorro.png') }}" alt="">
             </td>
-            <td data-value="21" data-name="Gallo">
+            <td data-value="21" data-name="Gallo" class="item">
               <img class="img-fluid" data-src="holder.js/100x50?ImgAnimal" src="{{ asset('img/animalitos/21-Gallo.png') }}" alt="">
             </td>
-            <td data-value="27" data-name="Perro">
+            <td data-value="27" data-name="Perro" class="item">
               <img class="img-fluid" data-src="holder.js/100x50?ImgAnimal" src="{{ asset('img/animalitos/27-Perro.png') }}" alt="">
             </td>
-            <td data-value="33" data-name="Pescado">
+            <td data-value="33" data-name="Pescado" class="item">
               <img class="img-fluid" data-src="holder.js/100x50?ImgAnimal" src="{{ asset('img/animalitos/33-Pescado.png') }}" alt="">
             </td>
           </tr>
           <tr>
-            <td data-value="2" data-name="Toro">
+            <td data-value="2" data-name="Toro" class="item">
               <img class="img-fluid" data-src="holder.js/100x50?ImgAnimal" src="{{ asset('img/animalitos/02-Toro.png') }}" alt="">
             </td>
-            <td data-value="8" data-name="Raton">
+            <td data-value="8" data-name="Raton" class="item">
               <img class="img-fluid" data-src="holder.js/100x50?ImgAnimal" src="{{ asset('img/animalitos/08-Raton.png') }}" alt="">
             </td>
-            <td data-value="14" data-name="Paloma">
+            <td data-value="14" data-name="Paloma" class="item">
               <img class="img-fluid" data-src="holder.js/100x50?ImgAnimal" src="{{ asset('img/animalitos/14-Paloma.png') }}" alt="">
             </td>
-            <td data-value="20" data-name="Cochino">
+            <td data-value="20" data-name="Cochino" class="item">
               <img class="img-fluid" data-src="holder.js/100x50?ImgAnimal" src="{{ asset('img/animalitos/20-Cochino.png') }}" alt="">
             </td>
-            <td data-value="26" data-name="Vaca">
+            <td data-value="26" data-name="Vaca" class="item">
               <img class="img-fluid" data-src="holder.js/100x50?ImgAnimal" src="{{ asset('img/animalitos/26-Vaca.png') }}" alt="">
             </td>
-            <td data-value="32" data-name="Ardilla">
+            <td data-value="32" data-name="Ardilla" class="item">
               <img class="img-fluid" data-src="holder.js/100x50?ImgAnimal" src="{{ asset('img/animalitos/32-Ardilla.png') }}" alt="">
             </td>
           </tr>
           <tr>
-            <td data-value="1" data-name="Carnero">
+            <td data-value="1" data-name="Carnero" class="item">
               <img class="img-fluid" data-src="holder.js/100x50?ImgAnimal" src="{{ asset('img/animalitos/01-Carnero.png') }}" alt="">
             </td>
-            <td data-value="7" data-name="Perico">
+            <td data-value="7" data-name="Perico" class="item">
               <img class="img-fluid" data-src="holder.js/100x50?ImgAnimal" src="{{ asset('img/animalitos/07-Perico.png') }}" alt="">
             </td>
-            <td data-value="13" data-name="Mono">
+            <td data-value="13" data-name="Mono" class="item">
               <img class="img-fluid" data-src="holder.js/100x50?ImgAnimal" src="{{ asset('img/animalitos/13-Mono.png') }}" alt="">
             </td>
-            <td data-value="19" data-name="Chivo">
+            <td data-value="19" data-name="Chivo" class="item">
               <img class="img-fluid" data-src="holder.js/100x50?ImgAnimal" src="{{ asset('img/animalitos/19-Chivo.png') }}" alt="">
             </td>
-            <td data-value="25" data-name="Gallina">
+            <td data-value="25" data-name="Gallina" class="item">
               <img class="img-fluid" data-src="holder.js/100x50?ImgAnimal" src="{{ asset('img/animalitos/25-Gallina.png') }}" alt="">
             </td>
-            <td data-value="25" data-name="Lapa">
+            <td data-value="25" data-name="Lapa" class="item">
               <img class="img-fluid" data-src="holder.js/100x50?ImgAnimal" src="{{ asset('img/animalitos/31-Lapa.png') }}" alt="">
             </td>
           </tr>
