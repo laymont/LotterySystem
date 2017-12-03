@@ -75,13 +75,13 @@ class PlayController extends Controller
       $hourActual->minute = 00;
       $hourActual->second = 00;
       $hourActual->addHour();
-      $hourActual->subMinutes(5); //hora del sorteo menos 5 min
+      $hourActual->subMinutes(5); //hora del sorteo menos 5 min$hourActual
 
       $numberTicket = time() . '-' . mt_rand(0,38);
 
       $raffles = Raffle::where('lottery_id', 1)
       ->where('day','=', $day)
-      ->where('hour','>=', $hourActual)
+      ->where('hour','>=', $hourActual->toTimeString())
       ->pluck('hour','id');
 
       if($raffles->isEmpty()){
