@@ -97,8 +97,8 @@ class HomeController extends Controller
           /* Autorizar a Administrador */
           /* Verificar si la informacion del Usuario esta completa */
           $info = User_info::where('user_id', Auth::user()->id)->count();
-          if ( $info == 0){
-            alert()->flash('Informacion de Usuario Incompleta!', 'warning')->autoclose(30000);
+          if ( $info === 0){
+            alert()->warning('Informacion de Usuario Incompleta! Por favor complete la información.', 'Atencion')->autoclose(30000);
             $request->user()->authorizeRoles(['user', 'admin']);
             return view('home', compact('amountpending', 'tickets','withoutReport','animals','retreats'));
           }else {

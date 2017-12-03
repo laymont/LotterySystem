@@ -7,22 +7,19 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class WelcomeUser extends Mailable
+class Confirmation_code extends Mailable
 {
   use Queueable, SerializesModels;
 
-  public $name;
-  public $email;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($name,$email)
+    public function __construct()
     {
-      $this->name = $name;
-      $this->email = $email;
+
     }
 
     /**
@@ -32,6 +29,6 @@ class WelcomeUser extends Mailable
      */
     public function build()
     {
-      return $this->markdown('emails.welcome');
+      return $this->markdown('emails.confirmation_code');
     }
   }

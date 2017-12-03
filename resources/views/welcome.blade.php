@@ -60,12 +60,14 @@
         <ul class="navbar-nav">
           @guest
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('login') }}">Acceso</a>
+            <a class="nav-link" href="{{ route('login') }}"><i class="fa fa-sign-in" aria-hidden="true"></i> Ingresar</a>
           </li>
-          <li class="nav-item">
-            {{-- <a class="nav-link" href="{{ route('register') }}">Registro</a> --}}
+          <li>
+            <a class="nav-link" href="{{ route('register') }}"><i class="fa fa-sign-in" aria-hidden="true"></i> Registrarse</a>
           </li>
+          <ul>
           @else
+          <ul class="navbar-nav">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="dropdown08" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Acciones</a>
             <div class="dropdown-menu" aria-labelledby="dropdown08">
@@ -82,6 +84,7 @@
             <a class="dropdown-item" href="#">Something else here</a> --}}
           </div>
         </li>
+      </ul>
         {{-- Sweet Alert --}}
         <script type="text/javascript">
           swal({

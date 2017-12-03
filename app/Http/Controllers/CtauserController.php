@@ -9,6 +9,8 @@ use App\Regain;
 use Illuminate\Http\Request;
 use DB;
 use Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\RegainsUser;
 
 class CtauserController extends Controller
 {
@@ -81,6 +83,17 @@ class CtauserController extends Controller
         $retirementReg->user_id = Auth::id();
         $retirementReg->amount = $request->amount;
         $retirementReg->save();
+
+        $data = auth()->user();
+        $data->toArray();
+
+        /* Notificacion por email al usuario */
+        Mail::send('emails.regainuser', ['name' => auth()->user()->name], function ($message) use($data)
+        {
+          $message->to($data['email'], $data['name'])->subject('Notificacion de Retiro de Saldo!');
+
+        });
+
         alert()->warning('Notificación de Retiro','La notificación de retiro ha sido efectuada. Se espera por la aprobación de Administración')->autoclose(30000);
         return redirect('home');
       }

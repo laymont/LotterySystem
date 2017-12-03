@@ -14,15 +14,37 @@ use Illuminate\Support\Facades\Mail;
 // Route::get('/', function() {
 //   return view('welcome');
 // });
+//
+Route::get('testsend', function(){
+  $user = \App\User::find(3)->toArray();
+  Mail::send('emails.welcome', $user, function($message) use ($user) {
+    $message->to($user['email']);
+    $message->subject('Bienvenido');
+  });
 
-Route::get('email', function(){
+  dd('Mail Send Successfully');
+});
+
+Route::get('testemail', function(){
   return new \App\Mail\WelcomeUser(auth()->user()->name);
   // Mail::to('laymont@gmail.com')->send(new \App\Mail\WelcomeUser(auth()->user()->name));
   // return view('home');
 });
 
-Route::get('ticket', function(){
+Route::get('testticket', function(){
   return new \App\Mail\TicketUser();
+  // Mail::to('laymont@gmail.com')->send(new \App\Mail\WelcomeUser(auth()->user()->name));
+  // return view('home');
+});
+
+Route::get('testconfirm', function(){
+  return new \App\Mail\confirmation_code( auth()->user()->name);
+  // Mail::to('laymont@gmail.com')->send(new \App\Mail\WelcomeUser(auth()->user()->name));
+  // return view('home');
+});
+
+Route::get('testregain', function(){
+  return new \App\Mail\RegainsUser(auth()->user()->name);
   // Mail::to('laymont@gmail.com')->send(new \App\Mail\WelcomeUser(auth()->user()->name));
   // return view('home');
 });

@@ -27,7 +27,7 @@
   }
   .card-header { color: #616161; background-color: #E3F3F7; }
   .bg-dark-custom { background-color: #000; }
-  .margin-nav { margin-top: 30px; }
+  .margin-nav { margin-top: 60px; }
   .text-white { color: white; }
   table tr td { font-family: 'Open Sans', sans-serif; color: #4A2C2C; font-size: 0.8em !important; }
   table thead th { color: #616161; background-color: #E3F3F7; }
@@ -51,26 +51,18 @@
 </head>
 <body>
   <div id="app">
-    {{-- Start Navbar Bootstrap 4 --}}
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    {{-- New NavBar --}}
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
       <a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name', 'Laravel') }}</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="{{ url('home') }}">Home <span class="sr-only">(current)</span></a>
-          </li>
-          @if(Auth::user()->hasRole('admin'))
-          <a class="nav-link" href="{{ route('roles.index') }}" title="User&Role">Usuarios y Roles</a>
-          <a class="nav-link" href="{{ route('lotteries.index') }}" title="Lotteries">Loterias</a>
-          <a class="nav-link" href="{{ route('ctausers.index') }}" title="CtaUsers">Cta/Usuarios</a>
-          @endif
-        </ul>
-        <ul class="navbar-nav">
           @guest
+          <li class="nav-item active">
+            <a class="nav-link" href="{{ url('home') }}">Inicio/App <span class="sr-only">(current)</span></a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ route('login') }}">Login</a>
           </li>
@@ -78,27 +70,45 @@
             <a class="nav-link" href="{{ route('register') }}">Register</a>
           </li>
           @else
+          <li class="nav-item active">
+            <a class="nav-link" href="{{ url('home') }}"><i class="fa fa-home" aria-hidden="true"></i> Inicio/App <span class="sr-only">(current)</span></a>
+          </li>
+          @if(Auth::user()->hasRole('admin'))
+          <li>
+            <a class="nav-link" href="{{ route('roles.index') }}" title="User&Role"><i class="fa fa-users" aria-hidden="true"></i> Usuarios y Roles</a>
+          </li>
+          <li>
+            <a class="nav-link" href="{{ route('lotteries.index') }}" title="Lotteries">Loterias</a>
+          </li>
+          <li>
+            <a class="nav-link" href="{{ route('ctausers.index') }}" title="CtaUsers"><i class="fa fa-users" aria-hidden="true"></i> Cta/Usuarios</a>
+          </li>
+          @endif
+          @endguest
+        </ul>
+        @auth
+        <ul class="navbar-nav">
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="dropdown08" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown08">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> {{ auth()->user()->name }}</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown03">
+              {{-- <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a> --}}
               <a class="nav-link" href="{{ route('logout') }}"
               onclick="event.preventDefault();
               document.getElementById('logout-form').submit();">
-              Logout
+              <span class="text-danger"><i class="fa fa-sign-out" aria-hidden="true"></i> Salir</span>
             </a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
               {{ csrf_field() }}
             </form>
-            {{-- <a class="dropdown-item" href="#">Something else here</a> --}}
           </div>
         </li>
-        @endguest
       </ul>
-
+      @endauth
     </div>
   </nav>
-  {{-- End Navbar Bootstrap 4 --}}
-  <div class="container">
+  {{-- New NavBar --}}
+  <div class="container margin-nav">
     @include('sweet::alert')
     <div class="row">
       <div class="col-4 offset-4">

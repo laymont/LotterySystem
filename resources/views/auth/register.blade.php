@@ -18,7 +18,7 @@
                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus placeholder="Nombre Completo">
 
                 @if ($errors->has('name'))
-                <span class="help-block">
+                <span class="help-block text-danger">
                   <strong>{{ $errors->first('name') }}</strong>
                 </span>
                 @endif
@@ -32,7 +32,7 @@
                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required placeholder="email@tudominio.com">
 
                 @if ($errors->has('email'))
-                <span class="help-block">
+                <span class="help-block text-danger">
                   <strong>{{ $errors->first('email') }}</strong>
                 </span>
                 @endif
@@ -46,7 +46,7 @@
                 <input id="password" type="password" class="form-control" name="password" required placeholder="Indique su clave">
 
                 @if ($errors->has('password'))
-                <span class="help-block">
+                <span class="help-block text-danger">
                   <strong>{{ $errors->first('password') }}</strong>
                 </span>
                 @endif

@@ -5,7 +5,7 @@
 
   <div class="row">
     <div class="col-3">
-      <h3>Mi Info <small class="text-muted">{{ Auth::user()->name }}</small></h3>
+      <h3>{{ auth()->user()->name }} <small class="text-muted">Info</small></h3>
       <a class="btn btn-sm btn-info" href="{{ url('home') }}" title="Regresar"> <i class="fa fa-chevron-left" aria-hidden="true"></i> Regresar</a>&nbsp;
       <a class="btn btn-sm btn-warning" href="{{ route('users.edit',['id'=>Auth::user()->id]) }}" title="Editar"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</a>
       <hr>

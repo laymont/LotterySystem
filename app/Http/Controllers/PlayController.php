@@ -70,13 +70,20 @@ class PlayController extends Controller
     {
       $lottery_list = Lotterie::pluck('name','id');
       $day = \Carbon\Carbon::now('America/Caracas')->format('D'); // Dia de la Semana
-      $hourActual = \Carbon\Carbon::now('America/Caracas')->format('H:m:s');
+
+      $hourActual = \Carbon\Carbon::now('America/Caracas');
+      $hourActual->minute = 00;
+      $hourActual->second = 00;
+      $hourActual->addHour();
+      $hourActual->subMinutes(5); //hora del sorteo menos 5 min
+
       $numberTicket = time() . '-' . mt_rand(0,38);
 
       $raffles = Raffle::where('lottery_id', 1)
       ->where('day','=', $day)
       ->where('hour','>=', $hourActual)
       ->pluck('hour','id');
+
       if($raffles->isEmpty()){
         alert()->error('Sin Sorteo', 'No hay sorteos disponibles para jugar')->autoclose(30000);
         return redirect('home');

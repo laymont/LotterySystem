@@ -16,7 +16,7 @@
           <h4 class="card-title"><i class="fa fa-info-circle" aria-hidden="true"></i> Información General de mi Cuenta  </h4>
           <div class="row card-body">
             <div class="col-lg-6">
-              <h6 class="card-subtitle mb-2"><span class="text-muted">Nombre: </span>{{ Auth::user()->name }}</h6>
+              <h6 class="card-subtitle mb-2"><span class="text-muted">Nombre: </span>{{ auth()->user()->name }}</h6>
               <h6 class="card-subtitle"><span class="text-muted">Usuario desde: </span> {{ Auth::user()->created_at->format('Y-m-d') }}</h6>
               <div class="card-block">
                 <ul class="list-group">

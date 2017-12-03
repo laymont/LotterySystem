@@ -7,6 +7,7 @@ use App\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Mail;
 
 class RegisterController extends Controller
 {
@@ -63,11 +64,19 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+      $data['confirmation_code'] = str_random(25);
+
       $user = User::create([
         'name' => $data['name'],
         'email' => $data['email'],
         'password' => bcrypt($data['password']),
+        'confirmation_code' => $data['confirmation_code']
       ]);
+
+      Mail::send('emails.welcome', $user, function($message) use ($user) {
+        $message->to($user->email);
+        $message->subject('Bienvenido a Mundo Animalitos');
+      });
 
       $user
       ->roles()
