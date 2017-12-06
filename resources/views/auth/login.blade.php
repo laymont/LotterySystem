@@ -42,9 +42,9 @@
               Ingresar
             </button>
 
-            <a class="btn btn-link" href="{{ route('password.request') }}">
+            {{-- <a class="btn btn-link" href="{{ route('password.request') }}">
               Olvido su Clave?
-            </a>
+            </a> --}}
           </div>
           {!! Form::close() !!}
         </div>

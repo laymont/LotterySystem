@@ -22,4 +22,15 @@ class Role_user extends Model
   protected $fillable = ['role_id','user_id'];
 
   protected $guarded = ['id'];
+
+  /**
+   * Role_user belongs to Users.
+   *
+   * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+   */
+  public function users()
+  {
+    // belongsTo(RelatedModel, foreignKey = users_id, keyOnRelatedModel = id)
+    return $this->belongsTo(User::class)->withTimestamps();
+  }
 }

@@ -102,6 +102,8 @@ class PlayController extends Controller
      */
     public function store(Request $request)
     {
+      // dd($request->all());
+
       /* Make Array */
       $ticket = collect(); // Nueva colecion para ticket
       $number = explode(",",$request->numbers); // Numeros Jugados

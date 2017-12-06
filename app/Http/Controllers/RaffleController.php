@@ -45,7 +45,10 @@ class RaffleController extends Controller
      */
     public function show($id)
     {
-      $raffles = Raffle::where('lottery_id', $id)->orderBy('day')->orderBy('hour')->get();
+      $raffles = Raffle::where('lottery_id', $id)
+      ->orderBy('day')
+      ->orderBy('hour')
+      ->get();
       // dd($raffles);
 
       return view('raffles.show')->with('raffles', $raffles);

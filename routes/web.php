@@ -1,5 +1,5 @@
 <?php
-use Illuminate\Support\Facades\Mail;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,49 +11,10 @@ use Illuminate\Support\Facades\Mail;
 |
 */
 
-// Route::get('/', function() {
-//   return view('welcome');
-// });
-//
-Route::get('testsend', function(){
-  $user = \App\User::find(3)->toArray();
-  Mail::send('emails.welcome', $user, function($message) use ($user) {
-    $message->to($user['email']);
-    $message->subject('Bienvenido');
-  });
-
-  dd('Mail Send Successfully');
-});
-
-Route::get('testemail', function(){
-  return new \App\Mail\WelcomeUser(auth()->user()->name);
-  // Mail::to('laymont@gmail.com')->send(new \App\Mail\WelcomeUser(auth()->user()->name));
-  // return view('home');
-});
-
-Route::get('testticket', function(){
-  return new \App\Mail\TicketUser();
-  // Mail::to('laymont@gmail.com')->send(new \App\Mail\WelcomeUser(auth()->user()->name));
-  // return view('home');
-});
-
-Route::get('testconfirm', function(){
-  return new \App\Mail\confirmation_code( auth()->user()->name);
-  // Mail::to('laymont@gmail.com')->send(new \App\Mail\WelcomeUser(auth()->user()->name));
-  // return view('home');
-});
-
-Route::get('testregain', function(){
-  return new \App\Mail\RegainsUser(auth()->user()->name);
-  // Mail::to('laymont@gmail.com')->send(new \App\Mail\WelcomeUser(auth()->user()->name));
-  // return view('home');
-});
-
-Route::get('politica', function(){
-  return view('/politica');
-});
+Auth::routes();
 
 Route::get('/', function () {
+
   $animals = collect(\Config::get('constants.animals'));
   /* Mas Jugado */
   $avgPlay = \DB::table('plays')
@@ -103,21 +64,15 @@ Route::get('/', function () {
   return view('welcome', compact('chartjsPlay'));
 });
 
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('confirmed/{id}', 'HomeController@confirmed')->name('confirmedpay');
-
+Route::get('politica', function(){
+  return view('/politica');
+});
 
 /* Informacion del Usuario */
 Route::resource('users', 'UserinfoController');
-
 Route::resource('roles','RoleUserController');
-
-Route::resource('lotteries', 'LotterieController');
-
-Route::get('raffle_id/{lottery}', 'RaffleController@raffleList');
-Route::resource('raffles', 'RaffleController');
 
 /* Cta Users */
 Route::resource('ctausers', 'CtauserController');
@@ -126,11 +81,21 @@ Route::patch('ctausers/{id}/retreats', 'CtauserController@retreats')->name('ctau
 Route::patch('ctausers/{id}/retirement','CtauserController@retirement')->name('ctausers.retirement');
 Route::get('ctausers/{user_id}/pay','CtauserController@addacount')->name('ctausers.addacount');
 
-Route::resource('regains', 'RegainController');
-
 /* toplay */
 Route::get('toplay/showtickets', 'PlayController@showtickets')->name('toplay.showtickets');
 Route::resource('toplay', 'PlayController');
+
+Route::get('results/winners', 'ResultController@winners')->name('results.winners');
+Route::get('results/notifyposttime/{raffle_id}', 'ResultController@notifyposttime')->name('results.notifyposttime');
+Route::get('results/statistics','ResultController@statistics')->name('results.statistics');
+Route::resource('results', 'ResultController');
+
+Route::resource('lotteries', 'LotterieController');
+
+Route::get('raffle_id/{lottery}', 'RaffleController@raffleList');
+Route::resource('raffles', 'RaffleController');
+
+Route::resource('regains', 'RegainController');
 
 /* Mostrar Ticket */
 Route::get('ticket/{ticket}', function($ticket){
@@ -151,7 +116,34 @@ Route::get('_raffleamount', function (){
   return array_sum($amounts);
 });
 
-Route::get('results/winners', 'ResultController@winners')->name('results.winners');
-Route::get('results/notifyposttime/{raffle_id}', 'ResultController@notifyposttime')->name('results.notifyposttime');
-Route::get('results/statistics','ResultController@statistics')->name('results.statistics');
-Route::resource('results', 'ResultController');
+/*Route::get('testsend', function(){
+  $user = \App\User::find(3)->toArray();
+  Mail::send('emails.welcome', $user, function($message) use ($user) {
+    $message->to($user['email']);
+    $message->subject('Bienvenido');
+  });
+});
+
+Route::get('testemail', function(){
+  return new \App\Mail\WelcomeUser(auth()->user()->name);
+  // Mail::to('laymont@gmail.com')->send(new \App\Mail\WelcomeUser(auth()->user()->name));
+  // return view('home');
+});
+
+Route::get('testticket', function(){
+  return new \App\Mail\TicketUser();
+  // Mail::to('laymont@gmail.com')->send(new \App\Mail\WelcomeUser(auth()->user()->name));
+  // return view('home');
+});
+
+Route::get('testconfirm', function(){
+  return new \App\Mail\confirmation_code( auth()->user()->name);
+  // Mail::to('laymont@gmail.com')->send(new \App\Mail\WelcomeUser(auth()->user()->name));
+  // return view('home');
+});
+
+Route::get('testregain', function(){
+  return new \App\Mail\RegainsUser(auth()->user()->name);
+  // Mail::to('laymont@gmail.com')->send(new \App\Mail\WelcomeUser(auth()->user()->name));
+  // return view('home');
+});*/

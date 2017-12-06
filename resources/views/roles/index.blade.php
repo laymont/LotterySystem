@@ -20,7 +20,11 @@
           <tr>
             <td>{{ $item->name }}</td>
             <td>{{ $item->email }}</td>
-            <td>{{ $item->roles[0]->name }}</td>
+            <td>
+              @foreach ($item->roles as $element)
+                {{ $element->name }}
+              @endforeach
+            </td>
             <td>
               @if(Auth::user()->hasRole('admin'))
               {{-- set admin --}}

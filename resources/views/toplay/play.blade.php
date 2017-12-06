@@ -257,6 +257,10 @@
   $(function(){
     console.log('Run jQuery');
 
+    var ticket = new Array();
+    var raffleStr = null;
+    var tr = new Array();
+
     var day = moment().format('YYYY-MM-DD');
     var numbers = [];
     var amounts = [];
@@ -297,6 +301,7 @@
     ['31','31-Lapa'],
     ['32','32-Ardilla'],
     ['33','33-Pescado'],
+    ['34','34-Venado'],
     ['35','35-Jirafa'],
     ['36','36-Culebra']
     ];
@@ -315,6 +320,7 @@
       $(this).attr('disabled', 'disabled');
     })
 
+    /* Jugar Avanzado */
     $('#number').click(function(){
       var advancePlay = confirm('Desea Jugar de Forma Avanzada?');
       if (advancePlay){
@@ -364,13 +370,21 @@
         });
         return false;
       }else{
+
+        var number = $('#number').val();
+        var amount = $('#amount').val();
+
         numbers.push( $('#number').val() );
-        // $('#numbers').val(numbers);
         amounts.push( $('#amount').val() );
-        // $('#acounts').val(amounts);
+
 
         $('#play').show();
       }
+
+      /* Valores en array */
+      $('#numbers').val(numbers);
+      $('#amounts').val(amounts);
+      console.info('Numbers: ' + numbers + ' Amounts: ' + amounts);
 
       var resultAnimal;
       for (var i = animals.length - 1; i >= 0; i--) {
@@ -378,10 +392,22 @@
           resultAnimal = animals[i][1];
         }
       }
+      console.info('Animal: ' + resultAnimal);
 
-      $('#plays').append('<tr><td id="btnrmv" class="text-center">'+ $("#raffle_id option:selected").text() +'</td><td class="text-center">'+ resultAnimal +'</td><td class="text-right">'+ parseFloat($('#amount').val()) +'</td></tr>');
+
+      // The following object masquerades as an array.
+      ticket.push({ "number": number, "amount": amount}) ;
+
+      /* Sorteo */
+      raffleStr = $("#raffle_id option:selected").text();
+
+      // Therefore, convert it to a real array
+      var realArray = $.makeArray( ticket );
+      console.info(realArray[realArray.length - 1]);
+      $('#tableticket tr:first').after('<tr> <td>' + '<button id="removeMove" class="btn btn-sm btn-warning" type="button">-</button>&nbsp' + raffleStr + '</td> <td>' + resultAnimal + '</td> <td class="text-right">'+ realArray[realArray.length - 1].amount +'</td> </tr>');
 
       total = parseFloat($('#amount').val()) + parseFloat(total);
+      console.info('Total Ticket: ' + total);
 
       $('#totalplay').html(parseFloat(total));
 
@@ -390,6 +416,18 @@
 
 
     })//End addNumber
+
+    $('#tableticket').on('click', '#removeMove', function(){
+      console.log($(this));
+      console.log('index tr: ' + $(this).parent().parent().remove() );
+
+      /*ticket = jQuery.grep(ticket, function (value) {
+        return value != $(this).val();
+      });*/
+
+      console.log(ticket);
+    });
+
 
   })
 </script>

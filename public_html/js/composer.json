@@ -1,0 +1,5 @@
+{
+    "require": {
+        "fx3costa/laravelchartjs": "^2.3"
+    }
+}

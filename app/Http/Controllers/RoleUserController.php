@@ -17,7 +17,7 @@ class RoleUserController extends Controller
      */
     public function index()
     {
-      $role_user = User::all();
+      $role_user = User::where('deleted_at',null)->with('roles')->get();
       return view('roles.index', compact('role_user'));
     }
 

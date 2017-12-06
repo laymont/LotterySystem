@@ -11,6 +11,7 @@
         "guzzlehttp/guzzle": "^6.3",
         "laracasts/flash": "^3.0",
         "laravel/framework": "5.5.*",
+        "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4.0",
         "laraveles/spanish": "^1.0",
@@ -20,7 +21,7 @@
         "yajra/laravel-datatables-oracle": "~8.0"
     },
     "require-dev": {
-		"barryvdh/laravel-debugbar": "^3.1",
+    "barryvdh/laravel-debugbar": "^3.1",
         "filp/whoops": "~2.0",
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
