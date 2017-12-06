@@ -59,6 +59,7 @@
         </div>
 
         <input type="hidden" name="amounts" id="amounts">
+        <input type="hidden" name="ticketFinal" id="ticketFinal">
 
         <div class="form-group">
           <button id="addNumber" type="button" class="btn btn-info"><i class="fa fa-plus-circle" aria-hidden="true"></i> ADD</button>
@@ -260,6 +261,7 @@
     var ticket = new Array();
     var raffleStr = null;
     var tr = new Array();
+    var realArray;
 
     var day = moment().format('YYYY-MM-DD');
     var numbers = [];
@@ -402,8 +404,9 @@
       raffleStr = $("#raffle_id option:selected").text();
 
       // Therefore, convert it to a real array
-      var realArray = $.makeArray( ticket );
+      realArray = $.makeArray( ticket );
       console.info(realArray[realArray.length - 1]);
+
       $('#tableticket tr:first').after('<tr> <td>' + '<button id="removeMove" class="btn btn-sm btn-warning" type="button">-</button>&nbsp' + raffleStr + '</td> <td>' + resultAnimal + '</td> <td class="text-right">'+ realArray[realArray.length - 1].amount +'</td> </tr>');
 
       total = parseFloat($('#amount').val()) + parseFloat(total);
@@ -414,18 +417,22 @@
       $('#number').val('');
       $('#amount').val('');
 
+      console.info('debajo ticket');
+      $('#ticketFinal').val(ticket);
+      console.info(ticket);
+
 
     })//End addNumber
 
     $('#tableticket').on('click', '#removeMove', function(){
-      console.log($(this));
-      console.log('index tr: ' + $(this).parent().parent().remove() );
+      var indexRemove = ($(this).parent().parent().index()) - 1;
+      delete ticket[indexRemove];
+      console.log( indexRemove );
+      console.log($(this).parent().parent().remove() );
 
-      /*ticket = jQuery.grep(ticket, function (value) {
-        return value != $(this).val();
-      });*/
 
       console.log(ticket);
+
     });
 
 
