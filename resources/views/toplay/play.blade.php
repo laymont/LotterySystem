@@ -21,10 +21,11 @@
   <div class="row">
     {{-- Form --}}
     <div class="col-lg-3">
-      <h3>Jugada</h3>
+      <h3>Jugar </h3>
       {{-- Reloj LIVE --}}
       <div id="time"></div>
       {{-- Form --}}
+      <hr>
       <div>
         {!! Form::open(['method' => 'POST', 'route'=> 'toplay.store', 'class' => 'form-horizontal','id' => 'ticketShow']) !!}
 
@@ -259,14 +260,17 @@
     console.log('Run jQuery');
 
     var ticket = new Array();
+    var lottery_id = $('#lottery_id option:selected').val();
+    var raffle_id;
     var raffleStr = null;
+    var numberTicket;
     var tr = new Array();
     var realArray;
-
-    var day = moment().format('YYYY-MM-DD');
+    var day = moment().format('YYYY-MM-DD HH:MM:SS');
     var numbers = [];
     var amounts = [];
     var total = parseFloat(0);
+
     var animals = [
     ['-1','00-Ballena'],
     ['0','0-Delfin'],
@@ -319,6 +323,7 @@
       $('#dashboard').show();
       $('#alertRaffle').hide();
       $('#raffleid').val($(this).val());
+      raffle_id = $(this).val();
       $(this).attr('disabled', 'disabled');
     })
 
@@ -383,9 +388,13 @@
         $('#play').show();
       }
 
+      numberTicket = $('input[name=ticket]').val();
+      console.log(numberTicket);
+
       /* Valores en array */
       $('#numbers').val(numbers);
       $('#amounts').val(amounts);
+
       console.info('Numbers: ' + numbers + ' Amounts: ' + amounts);
 
       var resultAnimal;
@@ -396,12 +405,12 @@
       }
       console.info('Animal: ' + resultAnimal);
 
-
-      // The following object masquerades as an array.
-      ticket.push({ "number": number, "amount": amount}) ;
-
       /* Sorteo */
       raffleStr = $("#raffle_id option:selected").text();
+
+
+      // The following object masquerades as an array.
+      ticket.push({ "date": day, "lottery_id": lottery_id, "raffle_id": raffle_id, "nticket": numberTicket, "number": number, "amount": amount}) ;
 
       // Therefore, convert it to a real array
       realArray = $.makeArray( ticket );
@@ -418,7 +427,7 @@
       $('#amount').val('');
 
       console.info('debajo ticket');
-      $('#ticketFinal').val(ticket);
+      $('#ticketFinal').val( JSON.stringify(ticket));
       console.info(ticket);
 
 
@@ -434,8 +443,6 @@
       console.log(ticket);
 
     });
-
-
   })
 </script>
 

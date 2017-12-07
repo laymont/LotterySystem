@@ -83,6 +83,7 @@ Route::get('ctausers/{user_id}/pay','CtauserController@addacount')->name('ctause
 
 /* toplay */
 Route::get('toplay/showtickets', 'PlayController@showtickets')->name('toplay.showtickets');
+Route::get('toplay/ticket/{ticket}', 'PlayController@printticket')->name('toplay.printticket');
 Route::resource('toplay', 'PlayController');
 
 Route::get('results/winners', 'ResultController@winners')->name('results.winners');
@@ -147,3 +148,46 @@ Route::get('testregain', function(){
   // Mail::to('laymont@gmail.com')->send(new \App\Mail\WelcomeUser(auth()->user()->name));
   // return view('home');
 });*/
+
+/* Route Mantenimiento */
+//Clear Cache facade value:
+Route::get('/clear-cache', function() {
+  $exitCode = Artisan::call('cache:clear');
+  alert()->success('ARTISAN', 'Cache facade value cleared')->autoclose(20000);
+  return redirect('home');
+})->name('clear-cache');
+
+//Reoptimized class loader:
+Route::get('/optimize', function() {
+  $exitCode = Artisan::call('optimize');
+  alert()->success('ARTISAN', 'Reoptimized class loader')->autoclose(20000);
+  return redirect('home');
+})->name('optimize');
+
+//Route cache:
+Route::get('/route-cache', function() {
+  $exitCode = Artisan::call('route:cache');
+  alert()->success('ARTISAN', 'Routes cached')->autoclose(20000);
+  return redirect('home');
+})->name('route-cache');
+
+//Clear Route cache:
+Route::get('/route-clear', function() {
+  $exitCode = Artisan::call('route:clear');
+  alert()->success('ARTISAN', 'Route cache cleared')->autoclose(20000);
+  return redirect('home');
+})->name('route-clear');
+
+//Clear View cache:
+Route::get('/view-clear', function() {
+  $exitCode = Artisan::call('view:clear');
+  alert()->success('ARTISAN', 'View cache cleared')->autoclose(20000);
+  return redirect('home');
+})->name('view-clear');
+
+//Clear Config cache:
+Route::get('/config-cache', function() {
+  $exitCode = Artisan::call('config:cache');
+  alert()->success('ARTISAN', 'Clear Config cleared')->autoclose(20000);
+  return redirect('home');
+})->name('config-cache');

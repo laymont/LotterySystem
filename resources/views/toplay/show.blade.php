@@ -8,10 +8,12 @@
 
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Ticket</h4>
-          <h6 class="card-subtitle"># {{ $viewticket[0]->ticket }} Sorteo: {{ $viewticket[0]->day }}-{{ $viewticket[0]->hour }}</h6>
+          <h4 class="card-title">Ticket <small>
+            {{-- <a class="btn btn-sm btn-info" href="{{ route('toplay.printticket', ['ticket' => $viewticket->first()->ticket]) }}" title="Imprimir">Imprimir</a> --}}
+          </small></h4>
+          <h6 class="card-subtitle"># {{ $viewticket->first()->ticket }} Sorteo: {{ $viewticket->first()->day }}-{{ $viewticket->first()->hour }}</h6>
           <table class="table table-condensed table-bordered table-hover">
-            <caption>Ticket {{ $viewticket[0]->ticket }}</caption>
+            <caption>Ticket {{ $viewticket->first()->ticket }}</caption>
             <thead>
               <tr>
                 <th>Hora</th>

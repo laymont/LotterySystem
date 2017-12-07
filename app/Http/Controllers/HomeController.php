@@ -43,6 +43,22 @@ class HomeController extends Controller
       ->selectRaw('users.id, users.name AS user, ctausers.payment_day, ctausers.payment, banks.name AS bank, ctausers.type, ctausers.reference')
       ->get();
 
+      /* Monto total jugado sorteo actual */
+      $totalamount = DB::table('plays')
+      ->join('raffles','plays.raffle_id','=','raffles.id')
+      ->whereRaw('DATE_FORMAT(plays.date, "%Y-%m-%d") = CURRENT_DATE()')
+      ->whereRaw('raffles.day = DATE_FORMAT(CURRENT_DATE(), "%a")')
+      ->whereRaw('raffles.hour >= DATE_FORMAT(CURRENT_TIME(), "%H:%i:%s")')
+      ->sum('amount');
+      /* Monto total jugado en el dia */
+      $totalamountDay = DB::table('plays')
+      ->join('raffles','plays.raffle_id','=','raffles.id')
+      ->whereRaw('DATE_FORMAT(plays.date, "%Y-%m-%d") = CURRENT_DATE()')
+      ->whereRaw('raffles.day = DATE_FORMAT(CURRENT_DATE(), "%a")')
+      ->sum('amount');
+
+      $translationday = collect(\Config::get('constants.translationday'));
+
       if( Auth::user()->hasRole('admin') )
         {
           /* Si es Administrador ve todos los tickets creados (actuales */
@@ -83,6 +99,7 @@ class HomeController extends Controller
             $retreats = Regain::where('send',0)
             ->where('user_id', Auth::id())
             ->get();
+
           }
 
           /* Resultados Pendientes */
@@ -100,10 +117,10 @@ class HomeController extends Controller
           if ( $info === 0){
             alert()->warning('Informacion de Usuario Incompleta! Por favor complete la información.', 'Atencion')->autoclose(30000);
             $request->user()->authorizeRoles(['user', 'admin']);
-            return view('home', compact('amountpending', 'tickets','withoutReport','animals','retreats'));
+            return view('home', compact('amountpending', 'tickets','withoutReport','animals','retreats','totalamount','translationday','totalamountDay'));
           }else {
             $request->user()->authorizeRoles(['user', 'admin']);
-            return view('home', compact('amountpending', 'tickets','withoutReport','animals','retreats'));
+            return view('home', compact('amountpending', 'tickets','withoutReport','animals','retreats','totalamount','translationday','totalamountDay'));
           }
 
         }

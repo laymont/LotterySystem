@@ -173,6 +173,7 @@ return [
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
         Radic\BladeExtensions\BladeExtensionsServiceProvider::class,
+        // Barryvdh\DomPDF\ServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -239,6 +240,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
+        // 'PDF' => Barryvdh\DomPDF\Facade::class,
 
     ],
 

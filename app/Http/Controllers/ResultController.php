@@ -22,7 +22,8 @@ class ResultController extends Controller
     {
       $results = Result::all()->sortByDesc('date');
       $animals = collect(\Config::get('constants.animals'));
-      return view('results.index', compact('results', 'animals'));
+      $translationday = collect(\Config::get('constants.translationday'));
+      return view('results.index', compact('results', 'animals','translationday'));
     }
 
     /**

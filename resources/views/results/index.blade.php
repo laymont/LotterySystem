@@ -22,7 +22,7 @@
           <tr>
             <td class="text-center align-middle">{{ $item->date }}</td>
             <td class="align-middle">{{ $item->lotterie->name }}</td>
-            <td class="text-center align-middle">{{ $item->raffle->day }} - {{ $item->raffle->hour }}</td>
+            <td class="text-center align-middle">{{ $translationday->get($item->raffle->day) }} - {{ $item->raffle->hour }}</td>
             <td class="text-center align-middle">
               <img class="img-fluid" width="90px" src="{{ asset('img/animalitos/'.$animals->get($item->result).'.png') }}" alt="{{ $animals->get($item->result) }}" title="{{ $animals->get($item->result) }}">
             </td>

@@ -43,4 +43,7 @@ return [
     '35'=>'35-Jirafa',
     '36'=>'36-Culebra'
   ],
+
+  'realdate' => date(DATE_ATOM, mktime()),
+  'translationday' => ['MON' => 'LUN', 'TUE' => 'MAR', 'WED' => 'MIE', 'THU' => 'JUE', 'FRI' => 'VIE', 'SAT' => 'SAB', 'SUN' => 'DOM'],
 ];

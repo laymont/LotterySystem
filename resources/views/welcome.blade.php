@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Mundo Animalitos</title>
+  <title>{{ config('app.name', 'Laravel') }}</title>
 
   <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
   <link rel="stylesheet" type="text/css" href="{{ asset('css/animate.css') }}">
@@ -173,7 +173,7 @@
         <p class="float-right">
           <a href="#">Regresar arriba</a>
         </p>
-        <p>&copy; Company 2017</p>
+        <p>&copy; {{ config('app.name', 'Laravel') }}.com 2017 | <a href="{{ url('/politica') }}" target="_blank" title="Politica">Política</a> </p>
       </div>
     </footer>
 

@@ -11,6 +11,7 @@ use App\Raffle;
 use App\Result;
 use Illuminate\Http\Request;
 use Alert;
+use PDF;
 
 class PlayController extends Controller
 {
@@ -44,7 +45,7 @@ class PlayController extends Controller
         /* Sorteos segun dia y hora */
         $raffles = Raffle::where('day',$day)
         ->where('day','=', $day)
-        // ->where('hour','>=', $hourActual)
+        ->where('hour','>=', $hourActual)
         ->pluck('hour','id');
       }else {
         /* Sorteos segun loteria dia y hora */
@@ -102,21 +103,22 @@ class PlayController extends Controller
      */
     public function store(Request $request)
     {
-      dd($request->all());
 
       /* Make Array */
-      $ticket = collect(); // Nueva colecion para ticket
-      $number = explode(",",$request->numbers); // Numeros Jugados
-      $amount = explode(",",$request->amounts); // Montos Apostados
+      $ticket = collect(json_decode($request->ticketFinal)); // Nueva colecion para ticket
+      // $number = explode(",",$request->numbers); // Numeros Jugados
+      // $amount = explode(",",$request->amounts); // Montos Apostados
 
 
       /* Creo la coleccion con $Request */
-      for ($i = 0; $i <=count($number)-1 ; $i++) {
+      /*for ($i = 0; $i <=count($number)-1 ; $i++) {
         $ticket->push(['date'=>\Carbon\Carbon::now()->format('Y-m-d h:m:s'),'ticket'=>$request->ticket,'user_id'=>$request->user_id,'lottery_id'=>$request->lottery_id,'raffle_id'=>$request->raffleid,'number'=>$number[$i],'amount'=>$amount[$i],'code'=>$request->lottery_id.'-'.$request->raffleid.'-'.$number[$i].'-'.$request->ticket]);
       }
+      */
 
       /* Monto total de la Apuesta */
       $betAmount = $ticket->sum('amount');
+      // dd($betAmount);
 
       /* Dato de las cuenta y abonos del usuario */
       $ctausers = Ctauser::where('spent',0)
@@ -138,14 +140,14 @@ class PlayController extends Controller
         /* registrar ticket */
         for ($i = 0; $i <=count($ticket)-1 ; $i++) {
           $regTicket = new Play;
-          $regTicket->date = $ticket[$i]['date'];
-          $regTicket->ticket = $ticket[$i]['ticket'];
-          $regTicket->user_id = $ticket[$i]['user_id'];
-          $regTicket->lottery_id = $ticket[$i]['lottery_id'];
-          $regTicket->raffle_id = $ticket[$i]['raffle_id'];
-          $regTicket->number = $ticket[$i]['number'];
-          $regTicket->amount = $ticket[$i]['amount'];
-          $regTicket->code = $ticket[$i]['code'];
+          $regTicket->date = $ticket[$i]->date;
+          $regTicket->ticket = $ticket[$i]->nticket;
+          $regTicket->user_id = Auth::id();
+          $regTicket->lottery_id = $ticket[$i]->lottery_id;
+          $regTicket->raffle_id = $ticket[$i]->raffle_id;
+          $regTicket->number = $ticket[$i]->number;
+          $regTicket->amount = $ticket[$i]->amount;
+          $regTicket->code = $ticket[$i]->lottery_id.'-'.$ticket[$i]->raffle_id.'-'.$ticket[$i]->number.'-'.$ticket[$i]->nticket;
           $regTicket->save();
         }
         /* Fin del Proceso */
@@ -175,7 +177,7 @@ class PlayController extends Controller
           $regTicket->raffle_id = $ticket[$i]['raffle_id'];
           $regTicket->number = $ticket[$i]['number'];
           $regTicket->amount = $ticket[$i]['amount'];
-          $regTicket->code = $ticket[$i]['code'];
+          $regTicket->code =  $ticket[$i]->lottery_id.'-'.$ticket[$i]->raffle_id.'-'.$ticket[$i]->number.'-'.$ticket[$i]->nticket;
           $regTicket->save();
         }
         /* Fin del Proceso */
@@ -203,8 +205,24 @@ class PlayController extends Controller
       ->where('ticket','=',$ticket)
       ->selectRaw('plays.ticket, raffles.day, raffles.hour, plays.number, plays.amount')
       ->get();
-      // dd($viewticket);
+      // dd( $viewticket->first()->ticket );
       return view('toplay.show', compact('viewticket','animals'));
+    }
+
+    public function printticket(Play $play, $ticket)
+    {
+      $animals = collect(\Config::get('constants.animals'));
+
+      $viewticket = DB::table('plays')
+      ->join('raffles','plays.raffle_id','=','raffles.id')
+      ->where('ticket','=',$ticket)
+      ->selectRaw('plays.ticket, raffles.day, raffles.hour, plays.number, plays.amount')
+      ->get();
+
+      $pdf = PDF::loadView('toplay.ticket', compact('viewticket','animals'));
+      return $pdf->download('ticket.pdf');
+
+      // return view('toplay.ticket', compact('viewticket','animals'));
     }
 
     public function raffleamount()

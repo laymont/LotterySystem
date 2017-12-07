@@ -17,6 +17,7 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Spectral+SC" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   <style type="text/css" media="screen">
   html, body {
     font-family: 'EB Garamond', serif;
@@ -32,6 +33,7 @@
   table tr td { font-family: 'Open Sans', sans-serif; color: #4A2C2C; font-size: 0.8em !important; }
   table thead th { color: #616161; background-color: #E3F3F7; }
   .list-group a:hover { color: #3E4377; }
+  #time { font-family: 'Open Sans', sans-serif; }
 
 </style>
 <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
@@ -83,6 +85,19 @@
           <li>
             <a class="nav-link" href="{{ route('ctausers.index') }}" title="CtaUsers"><i class="fa fa-users" aria-hidden="true"></i> Cta/Usuarios</a>
           </li>
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Laravel/Función</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown04">
+                <a class="nav-link text-warning" href="{{ route('clear-cache') }}" title="clear-cache">clear-cache</a>
+                <a class="nav-link text-warning" href="{{ route('optimize') }}" title="clear-cache">optimize</a>
+                {{-- <a class="nav-link text-warning" href="{{ route('route-cache') }}" title="clear-cache">route-cache</a> --}}
+                <a class="nav-link text-warning" href="{{ route('route-clear') }}" title="clear-cache">route-clear</a>
+                <a class="nav-link text-warning" href="{{ route('view-clear') }}" title="clear-cache">view-clear</a>
+                <a class="nav-link text-warning" href="{{ route('config-cache') }}" title="clear-cache">config-cache</a>
+              </div>
+            </li>
+          </ul>
           @endif
           @endguest
         </ul>

@@ -35,6 +35,7 @@
               <div class="card-block">
                 <ul class="list-group">
                   <a href="{{ route('toplay.showtickets') }}" class="list-group-item list-group-item-action"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Tickets <small>del Día</small></a>
+                  <li class="list-group-item list-group-item-action">Monto Total Jugado <strong>Bs. {{ number_format($totalamountDay,2,",",".") }}</strong></li>
                   <a id="amountplay" href="#" data-toggle="modal" data-target="#raffleplayamount" class="list-group-item list-group-item-action"><i class="fa fa-money" aria-hidden="true"></i> Monto Jugado <small>Sorteo Actual</small></a>
                   <a href="{{ route('results.winners') }}" class="list-group-item list-group-item-action list-group-item-success"><i class="fa fa-play" aria-hidden="true"></i> Ganadores <small>Tickets</small></a>
                   <a href="{{ route('results.create') }}" class="list-group-item list-group-item-action"><i class="fa fa-search" aria-hidden="true"></i> Resultado <small>Registrar</small></a>
@@ -73,7 +74,7 @@
             <tbody>
               @foreach ($withoutReport as $item)
               <tr>
-                <td>{{ $item->day }}</td>
+                <td>{{ $translationday->get($item->day) }}</td>
                 <td>
                   @if(Auth::user()->hasRole('admin'))
                   <a class="btn btn-sm btn-info" href="{{ route('results.notifyposttime', ['raffle_id' => $item->id]) }}" title="Notificar"> {{ $item->hour }}</a>
@@ -179,7 +180,7 @@
                 </div>
                 <div class="modal-body">
                   <h2>Sorteo Actual</h2>
-                  <h2 id="elamountactual" class="text-right">Bs. @{{ totalamount }}</h2>
+                  <h2 id="elamountactual" class="text-right">Bs. {{ $totalamount }}</h2>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
